@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".Profile">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:background="@drawable/gradient"
+                android:clipToPadding="false"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:weightSum="10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="Display Name:"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:fontFamily="sans-serif-condensed" />
+
+                    <EditText
+                        android:id="@+id/profile_name"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="Name"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:fontFamily="sans-serif-condensed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <ImageView
+                        android:id="@+id/profile_pic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:layout_weight="2"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/pic_background"
+                        android:padding="7dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/gabi" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:foregroundGravity="center"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="15dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/dark_button"
+                            android:text="Take New Profile Pic"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/button3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="15dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/dark_button"
+                            android:text="Select From Library"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
+                    android:background="@drawable/bio_background"
+                    android:orientation="vertical"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/bio_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
+                        android:text="Bio"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/bio_val"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="4"
+                        android:gravity="top|left"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:text="enter your bio here :)" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/scroll_background"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/trait_background"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <ImageView
+                                android:id="@+id/ss_img"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/moon_stars"
+                                android:scaleType="fitCenter" />
+
+                            <TextView
+                                android:id="@+id/ss_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="3"
+                                android:padding="5dp"
+                                android:text="Star Sign"
+                                android:textColor="#3923C6"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/ss_val"
+                                style="@style/spin_style"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="4"
+                                android:entries="@array/star_options"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"></Spinner>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/trait_background"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <ImageView
+                                android:id="@+id/mb_ibg"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/smile" />
+
+                            <TextView
+                                android:id="@+id/mb_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="3"
+                                android:padding="5dp"
+                                android:text="Meyers Briggs"
+                                android:textColor="#3923C6"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                            <Spinner
+                                android:id="@+id/mb_val"
+                                style="@style/spin_style"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="4"
+                                android:entries="@array/mb_options"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"></Spinner>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/trait_background"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <ImageView
+                                android:id="@+id/pet_img"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/new_paw" />
+
+                            <TextView
+                                android:id="@+id/pet_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="3"
+                                android:padding="5dp"
+                                android:text="Cats or Dogs?"
+                                android:textColor="#3923C6"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                            <Spinner
+                                android:id="@+id/pet_val"
+                                style="@style/spin_style"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="4"
+                                android:entries="@array/pet_options"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"></Spinner>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/trait_background"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <ImageView
+                                android:id="@+id/drink_img"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/cheers" />
+
+
+                            <TextView
+                                android:id="@+id/drink_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="3"
+                                android:padding="5dp"
+                                android:text="Drinking"
+                                android:textColor="#3923C6"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                            <Spinner
+                                android:id="@+id/drink_val"
+                                style="@style/spin_style"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="4"
+                                android:entries="@array/drink_options"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"></Spinner>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/trait_background"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <ImageView
+                                android:id="@+id/smoke_img"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/cigarette" />
+
+                            <TextView
+                                android:id="@+id/smoke_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="3"
+                                android:padding="5dp"
+                                android:text="Smoking"
+                                android:textColor="#3923C6"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                            <Spinner
+                                android:id="@+id/smoke_val"
+                                style="@style/spin_style"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="4"
+                                android:entries="@array/smoke_options"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"></Spinner>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/trait_background"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <ImageView
+                                android:id="@+id/politics_img"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/capitol" />
+
+                            <TextView
+                                android:id="@+id/politics_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="3"
+                                android:padding="5dp"
+                                android:text="Politics"
+                                android:textColor="#3923C6"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                            <Spinner
+                                android:id="@+id/politics_val"
+                                style="@style/spin_style"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="4"
+                                android:entries="@array/politics_options"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"></Spinner>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/save_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/dark_button"
+                android:onClick="handle_save"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

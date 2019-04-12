@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Date Better</string>
+    <string-array name="mb_options">
+        <item>None</item>
+        <item>ISTJ</item>
+        <item>ISFJ</item>
+        <item>INFJ</item>
+        <item>INTJ</item>
+        <item>ISTP</item>
+        <item>ISFP</item>
+        <item>INFP</item>
+        <item>INTP</item>
+        <item>ESTP</item>
+        <item>ESFP</item>
+        <item>ENFP</item>
+        <item>ENTP</item>
+        <item>ESTJ</item>
+        <item>ESFJ</item>
+        <item>ENFJ</item>
+        <item>ENTJ</item>
+
+    </string-array>
+    <string-array name="star_options">
+        <item>None</item>
+        <item>Aries</item>
+        <item>Taurus</item>
+        <item>Gemini</item>
+        <item>Cancer</item>
+        <item>Leo</item>
+        <item>Virgo</item>
+        <item>Libra</item>
+        <item>Scorpio</item>
+        <item>Sagittarius</item>
+        <item>Capricorn</item>
+        <item>Aquarius</item>
+        <item>Pisces</item>
+    </string-array>
+    <string-array name="pet_options">
+        <item>None</item>
+        <item>Cats</item>
+        <item>Dogs</item>
+        <item>Both</item>
+        <item>Neither</item>
+
+    </string-array>
+
+    <string-array name="drink_options">
+        <item>None</item>
+        <item>Never</item>
+        <item>Socially</item>
+        <item>Frequently</item>
+
+    </string-array>
+
+    <string-array name="smoke_options">
+        <item>None</item>
+        <item>Never</item>
+        <item>Socially</item>
+        <item>Frequently</item>
+
+    </string-array>
+
+    <string-array name="politics_options">
+        <item>None</item>
+        <item>Apolitical</item>
+        <item>Moderate</item>
+        <item>Conservative</item>
+        <item>Liberal</item>
+
+    </string-array>
+
+
+    <string name="bio_done">Done</string>
+
+</resources>
