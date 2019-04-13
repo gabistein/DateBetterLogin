@@ -5,27 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="9"
+    android:weightSum="2"
     tools:context=".Profile">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="1"
         android:background="@drawable/gradient"
         android:clipToPadding="false"
         android:gravity="top"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:weightSum="16">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_btn_background"
+            android:onClick="handle_home"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/home" />
 
         <TextView
             android:id="@+id/profile_name"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Welcome, Gabi :)"
+            android:gravity="center|center_horizontal"
+            android:text="Name, Age"
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="bold|italic"
@@ -34,28 +50,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="14"
+            android:gravity="left"
             android:orientation="horizontal"
             android:weightSum="3">
 
             <ImageView
                 android:id="@+id/profile_pic"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_margin="20dp"
+                android:adjustViewBounds="false"
                 android:background="@drawable/pic_background"
+                android:cropToPadding="true"
                 android:padding="7dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/gabi" />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="2"
+                android:layout_margin="5dp"
                 android:background="@drawable/bio_background"
                 android:orientation="vertical"
                 android:weightSum="5">
@@ -88,7 +105,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="fill_parent"
                             android:padding="10dp"
-                            android:text="Hello, I'm Gabi!  I love oatmeal, dogs, and my pet robot. SCROLL SRCROLL really long profile to make scroll view do its jobbbb" />
+                            android:text="enter bio here" />
                     </LinearLayout>
                 </ScrollView>
 
@@ -102,7 +119,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="5"
+        android:layout_weight="1"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:weightSum="5">
@@ -119,6 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -355,6 +373,126 @@
                         android:textSize="12sp" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/earth_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/planet_earth" />
+
+                    <TextView
+                        android:id="@+id/earth_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="The Earth is:"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/earth_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:text="Value"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/farmer_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/growth" />
+
+                    <TextView
+                        android:id="@+id/farmer_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Farmer?"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/farmer_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:text="Value"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/night_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/dance" />
+
+                    <TextView
+                        android:id="@+id/night_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Night in or out?"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/night_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:text="Value"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
 
@@ -375,6 +513,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
 </LinearLayout>

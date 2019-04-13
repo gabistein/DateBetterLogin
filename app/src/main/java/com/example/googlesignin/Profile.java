@@ -29,6 +29,10 @@ public class Profile extends AppCompatActivity {
         startActivity(new Intent(Profile.this, EditProfile.class));
 
     }
+
+    protected void handle_home(View v){
+        startActivity(new Intent(Profile.this, Home.class));
+    }
 }
 
 

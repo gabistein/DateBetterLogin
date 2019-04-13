@@ -20,7 +20,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:background="@drawable/gradient"
                 android:clipToPadding="false"
@@ -32,8 +32,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_weight="2"
+                    android:background="@drawable/bio_background"
                     android:orientation="horizontal"
+                    android:padding="5dp"
                     android:weightSum="2">
 
                     <TextView
@@ -41,8 +44,8 @@
                         android:layout_height="fill_parent"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:text="Display Name:"
+                        android:gravity="center_vertical"
+                        android:text="Name"
                         android:textColor="@android:color/white"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -54,10 +57,13 @@
                         android:layout_height="fill_parent"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="Name"
+                        android:gravity="center_horizontal|left"
+                        android:hint="enter name"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
                         android:textColor="@android:color/white"
-                        android:textSize="24sp"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:fontFamily="sans-serif-condensed" />
                 </LinearLayout>
@@ -65,6 +71,46 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/bio_background"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:text="Date of Birth"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:fontFamily="sans-serif-condensed" />
+
+                    <EditText
+                        android:id="@+id/profile_name"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:hint="enter birthday"
+                        android:imeOptions="actionDone"
+                        android:inputType="date"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:fontFamily="sans-serif-condensed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_weight="4"
                     android:orientation="horizontal"
                     android:weightSum="3">
@@ -124,9 +170,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="4"
                     android:background="@drawable/bio_background"
                     android:orientation="vertical"
+                    android:padding="10dp"
                     android:weightSum="5">
 
                     <TextView
@@ -148,9 +196,11 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="4"
                         android:gravity="top|left"
+                        android:hint="enter your bio here :)"
                         android:inputType="text"
                         android:padding="10dp"
-                        android:text="enter your bio here :)" />
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
 
                 </LinearLayout>
 
@@ -158,281 +208,395 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="10"
-                android:gravity="center_vertical"
+                android:background="@drawable/scroll_background"
                 android:orientation="vertical"
-                android:weightSum="5">
+                android:padding="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="5"
-                    android:background="@drawable/scroll_background"
-                    android:padding="10dp">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/ss_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/moon_stars"
+                        android:scaleType="fitCenter" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/trait_background"
-                            android:orientation="horizontal"
-                            android:weightSum="8">
+                    <TextView
+                        android:id="@+id/ss_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Star Sign"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-                            <ImageView
-                                android:id="@+id/ss_img"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/moon_stars"
-                                android:scaleType="fitCenter" />
+                    <Spinner
+                        android:id="@+id/ss_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/star_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
 
-                            <TextView
-                                android:id="@+id/ss_name"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="3"
-                                android:padding="5dp"
-                                android:text="Star Sign"
-                                android:textColor="#3923C6"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
+                </LinearLayout>
 
-                            <Spinner
-                                android:id="@+id/ss_val"
-                                style="@style/spin_style"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="4"
-                                android:entries="@array/star_options"
-                                android:spinnerMode="dialog"
-                                android:textSize="12sp"></Spinner>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
 
-                        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/mb_ibg"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/smile" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/trait_background"
-                            android:orientation="horizontal"
-                            android:weightSum="8">
-
-                            <ImageView
-                                android:id="@+id/mb_ibg"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/smile" />
-
-                            <TextView
-                                android:id="@+id/mb_name"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="3"
-                                android:padding="5dp"
-                                android:text="Meyers Briggs"
-                                android:textColor="#3923C6"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/mb_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Meyers Briggs"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
 
-                            <Spinner
-                                android:id="@+id/mb_val"
-                                style="@style/spin_style"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="4"
-                                android:entries="@array/mb_options"
-                                android:spinnerMode="dialog"
-                                android:textSize="12sp"></Spinner>
+                    <Spinner
+                        android:id="@+id/mb_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/mb_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
 
-                        </LinearLayout>
+                </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/trait_background"
-                            android:orientation="horizontal"
-                            android:weightSum="8">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
 
-                            <ImageView
-                                android:id="@+id/pet_img"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/new_paw" />
+                    <ImageView
+                        android:id="@+id/pet_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/new_paw" />
 
-                            <TextView
-                                android:id="@+id/pet_name"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="3"
-                                android:padding="5dp"
-                                android:text="Cats or Dogs?"
-                                android:textColor="#3923C6"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-
-
-                            <Spinner
-                                android:id="@+id/pet_val"
-                                style="@style/spin_style"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="4"
-                                android:entries="@array/pet_options"
-                                android:spinnerMode="dialog"
-                                android:textSize="12sp"></Spinner>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/trait_background"
-                            android:orientation="horizontal"
-                            android:weightSum="8">
-
-                            <ImageView
-                                android:id="@+id/drink_img"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:srcCompat="@drawable/cheers" />
+                    <TextView
+                        android:id="@+id/pet_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Cats or Dogs?"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
 
-                            <TextView
-                                android:id="@+id/drink_name"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="3"
-                                android:padding="5dp"
-                                android:text="Drinking"
-                                android:textColor="#3923C6"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
+                    <Spinner
+                        android:id="@+id/pet_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/pet_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/drink_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/cheers" />
 
 
-                            <Spinner
-                                android:id="@+id/drink_val"
-                                style="@style/spin_style"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="4"
-                                android:entries="@array/drink_options"
-                                android:spinnerMode="dialog"
-                                android:textSize="12sp"></Spinner>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/trait_background"
-                            android:orientation="horizontal"
-                            android:weightSum="8">
-
-                            <ImageView
-                                android:id="@+id/smoke_img"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/cigarette" />
-
-                            <TextView
-                                android:id="@+id/smoke_name"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="3"
-                                android:padding="5dp"
-                                android:text="Smoking"
-                                android:textColor="#3923C6"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/drink_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Drinking"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
 
-                            <Spinner
-                                android:id="@+id/smoke_val"
-                                style="@style/spin_style"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="4"
-                                android:entries="@array/smoke_options"
-                                android:spinnerMode="dialog"
-                                android:textSize="12sp"></Spinner>
-                        </LinearLayout>
+                    <Spinner
+                        android:id="@+id/drink_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/drink_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
+                </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/trait_background"
-                            android:orientation="horizontal"
-                            android:weightSum="8">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
 
-                            <ImageView
-                                android:id="@+id/politics_img"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:srcCompat="@drawable/capitol" />
+                    <ImageView
+                        android:id="@+id/smoke_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/cigarette" />
 
-                            <TextView
-                                android:id="@+id/politics_name"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="3"
-                                android:padding="5dp"
-                                android:text="Politics"
-                                android:textColor="#3923C6"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/smoke_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Smoking"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
 
-                            <Spinner
-                                android:id="@+id/politics_val"
-                                style="@style/spin_style"
-                                android:layout_width="0dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="4"
-                                android:entries="@array/politics_options"
-                                android:spinnerMode="dialog"
-                                android:textSize="12sp"></Spinner>
-                        </LinearLayout>
+                    <Spinner
+                        android:id="@+id/smoke_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/smoke_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
+                </LinearLayout>
 
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/politics_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/capitol" />
+
+                    <TextView
+                        android:id="@+id/politics_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Politics"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/politics_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/politics_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/earth_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/planet_earth" />
+
+                    <TextView
+                        android:id="@+id/earth_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="The Earth is:"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/earth_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/earth_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/farmer_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/growth" />
+
+                    <TextView
+                        android:id="@+id/farmer_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Farmer?"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/farm_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/farm_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/night_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/dance" />
+
+                    <TextView
+                        android:id="@+id/night_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Night in or out?"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/night_val"
+                        style="@style/spin_style"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:entries="@array/night_options"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"></Spinner>
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -440,7 +604,7 @@
             <Button
                 android:id="@+id/save_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -454,6 +618,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
     </ScrollView>
 
