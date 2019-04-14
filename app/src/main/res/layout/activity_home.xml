@@ -31,7 +31,7 @@
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-condensed" />
+        app:fontFamily="sans-serif-thin" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@drawable/darker_btn"
-        android:onClick="goto_profile"
+        android:background="@drawable/btn_p1"
+        android:onClick="handle_profile"
         android:text="View Profile"
         android:textAllCaps="false" />
 
@@ -69,7 +69,8 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/medium_dark_btn"
+            android:background="@drawable/btn_p2"
+            android:onClick="handle_options"
             android:text="Your Options"
             android:textAllCaps="false" />
 
@@ -81,7 +82,8 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/medium_light_btn"
+            android:background="@drawable/btn_p3"
+            android:onClick="handle_matches"
             android:text="Your Matches"
             android:textAllCaps="false" />
     </LinearLayout>
@@ -93,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@drawable/light_btn"
+        android:background="@drawable/btn_p4"
         android:text="Dates"
         android:textAllCaps="false"
         android:textColor="@android:color/white" />
