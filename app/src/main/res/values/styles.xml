@@ -14,13 +14,31 @@
     </style>
 
     <style name="menu_btn">
-        <item name="android:textColor">#FFFFFF </item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">15sp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">10dp</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="opt_name">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/gradient_dark_purple</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
 

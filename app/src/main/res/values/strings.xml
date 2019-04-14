@@ -90,5 +90,6 @@
     </string-array>
 
     <string name="bio_done">Done</string>
+    <string name="title_activity_test">test</string>
 
 </resources>

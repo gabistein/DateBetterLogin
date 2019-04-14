@@ -2,6 +2,7 @@ package com.example.googlesignin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,6 +26,10 @@ public class ViewOtherProfile extends AppCompatActivity {
         //set text based on liked value
         this.like_btn_text();
 
+
+        //testing if info is being passed
+        String test="Id passed in: "+getIntent().getStringExtra("view_profile_id");
+        Log.v("MYTAG", test);
     }
 
     protected void handle_like(View v){
