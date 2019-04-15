@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -26,6 +27,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class MainActivity extends AppCompatActivity {
 
     SignInButton button;
+    Button make_account_button;
     FirebaseAuth mAuth;
     private final static int RC_SIGN_IN = 2;
     GoogleSignInClient mGoogleSignInClient;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = (SignInButton) findViewById(R.id.sign_in_button);
+        make_account_button = (Button) findViewById(R.id.make_account);
+
         mAuth = FirebaseAuth.getInstance();
 
         button.setOnClickListener(new View.OnClickListener(){
@@ -52,18 +56,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        make_account_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+/*
+* Intent i = new Intent(this, ToClass.class);
+i.putExtra("epuzzle", easyPuzzle);
+startActivity(i); */
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null ) {
-                    // startActivity(new Intent(MainActivity.this, Login.class));
-                    startActivity(new Intent(MainActivity.this, Home.class));
-//                    FirebaseUserMetadata metadata = firebaseAuth.getCurrentUser().getMetadata();
-//                    if(metadata.getCreationTimestamp() == metadata.getLastSignInTimestamp()){
-//                        startActivity(new Intent(MainActivity.this, Register.class));
-//                    }else {
-//                        startActivity(new Intent(MainActivity.this, Login.class));
-//                    }
+                    // startActivity(new Intent(MainActivity.this, Home.class));
+                    FirebaseUserMetadata metadata = firebaseAuth.getCurrentUser().getMetadata();
+                    Intent newUser = new Intent(MainActivity.this, EditProfile.class);
+                    Intent returning = new Intent(MainActivity.this, Home.class);
+                    String email = mAuth.getCurrentUser().getEmail();
+                    newUser.putExtra("email", email);
+                    returning.putExtra("email", email);
+                    if( metadata.getLastSignInTimestamp() < metadata.getCreationTimestamp() + 10){
+                        startActivity(newUser);
+                    }else {
+                        startActivity(returning);
+                    }
                 }
             }
         };
@@ -78,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
     }
+
 
 
 
