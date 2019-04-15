@@ -18,12 +18,14 @@
         android:layout_margin="10dp"
         android:layout_gravity="center"/>
 
+
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"/>
+        android:layout_height="wrap_content" />
+
+
 
     <Button
         android:layout_width="match_parent"
@@ -41,4 +43,5 @@
 
 
 </LinearLayout>
+
 

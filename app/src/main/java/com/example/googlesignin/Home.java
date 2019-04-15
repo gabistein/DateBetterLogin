@@ -80,8 +80,16 @@ public class Home extends AppCompatActivity {
                 });
     }
 
-    protected void goto_profile(View v){
+    protected void handle_profile(View v){
         startActivity(new Intent(Home.this, Profile.class));
+    }
+
+    protected void handle_options(View v){
+        startActivity(new Intent(Home.this,Options.class));
+    }
+
+    protected void handle_matches(View v){
+        startActivity(new Intent(Home.this, Matches.class));
     }
 
 

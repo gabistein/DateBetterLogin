@@ -5,8 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     tools:context=".Home">
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/home_btn_background"
+        android:text="Log Out"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView"
@@ -14,67 +26,78 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:layout_weight="1"
         android:gravity="center"
         android:text="Welcome, User"
+        android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-condensed" />
+        app:fontFamily="sans-serif-thin" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/smiley" />
+        android:background="@drawable/pic_background"
+        android:padding="7dp"
+        app:srcCompat="@drawable/gabi" />
 
     <Button
         android:id="@+id/btn_view_prof"
-        android:layout_width="match_parent"
+        style="@style/menu_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:layout_weight="1"
+        android:background="@drawable/btn_p1"
+        android:onClick="handle_profile"
         android:text="View Profile"
-        android:onClick="goto_profile"
         android:textAllCaps="false" />
 
 
-
-    <Button
-        android:id="@+id/btn_options"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:text="Your Options"
-        android:textAllCaps="false" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_matches"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:text="Your Matches"
-        android:textAllCaps="false" />
+        <Button
+            android:id="@+id/btn_options"
+            style="@style/menu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_p2"
+            android:onClick="handle_options"
+            android:text="Your Options"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_matches"
+            style="@style/menu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_p3"
+            android:onClick="handle_matches"
+            android:text="Your Matches"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_dates"
-        android:layout_width="match_parent"
+        style="@style/menu_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:text="Your Dates"
-        android:textAllCaps="false" />
+        android:background="@drawable/btn_p4"
+        android:text="Dates"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:text="Log Out"
-        android:textAllCaps="false" />
 </LinearLayout>

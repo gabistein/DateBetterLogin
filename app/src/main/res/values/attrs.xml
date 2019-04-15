@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomView">
+        <attr name="option_name" format="string" />
+        <attr name="option_age" format="string" />
+        <attr name="option_score" format="float"/>
+    </declare-styleable>
+</resources>

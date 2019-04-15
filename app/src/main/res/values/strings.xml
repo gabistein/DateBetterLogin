@@ -44,6 +44,7 @@
 
     </string-array>
 
+
     <string-array name="drink_options">
         <item>None</item>
         <item>Never</item>
@@ -69,7 +70,26 @@
 
     </string-array>
 
+    <string-array name="earth_options">
+        <item>None</item>
+        <item>Round</item>
+        <item>Flat</item>
+    </string-array>
+
+    <string-array name="farm_options">
+        <item>None</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="night_options">
+        <item>None</item>
+        <item>In</item>
+        <item>Out</item>
+        <item>Both</item>
+    </string-array>
 
     <string name="bio_done">Done</string>
+    <string name="title_activity_test">test</string>
 
 </resources>
