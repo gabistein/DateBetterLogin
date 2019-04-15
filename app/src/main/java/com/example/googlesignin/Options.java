@@ -1,7 +1,6 @@
 package com.example.googlesignin;
 
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -123,7 +122,7 @@ public class Options extends AppCompatActivity {
     ///////////////////////////
 
     protected void handle_view_profile(int id){
-        Intent view_profile= new Intent(Options.this, ViewOtherProfile.class );
+        Intent view_profile= new Intent(Options.this, ViewOption.class );
         view_profile.putExtra("view_profile_id", ""+id);
         startActivity(view_profile);
     }
