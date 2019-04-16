@@ -1,6 +1,9 @@
 package com.example.googlesignin;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,27 +12,93 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Options extends AppCompatActivity {
+
+    DatabaseReference reff;
+    LinearLayout options_container;
+    int options_num = 1;
+    String currentList;
+    String email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        LinearLayout options_container= (LinearLayout) findViewById(R.id.options_container);
+        //Set current like list of user
 
-      //  options_container.addView(new ProfileOption(this));
-        options_container.addView(this.create_option(1,"Sarah", 22, 100));
-        options_container.addView(this.create_option(2,"Bob", 22, 100));
-        options_container.addView(this.create_option(3,"Sue", 22, 100));
 
+        // pull all options
+        reff = FirebaseDatabase.getInstance().getReference().child("Profile");
+        reff.orderByKey().addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                parseValues(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        options_container= (LinearLayout) findViewById(R.id.options_container);
+        email = getIntent().getExtras().getString("email").substring(0,getIntent().getExtras().getString("email").indexOf('@'));
 
 
         Log.v("MYTAG", "trying to add layout in oncreate");
     }
 
-    protected LinearLayout create_option_tile(int id, String name,int age, int match_score){
+    public void parseValues(String values){
+        String[] traits = values.split(",");
+        // need to figure out which has id
+//        for(int i = 0; i< traits.length; i++){
+//
+//        }
+
+        String id = traits[8].substring(traits[8].indexOf("=") + 1);
+        if(id.contains("@")){
+            id = id.substring(0,id.indexOf("@"));
+        }
+
+
+        String name = traits[5].substring(traits[5].indexOf("=") + 1);
+        System.out.println(name);
+        // still adding age
+        // still need to add score
+        // only list if they haven't liked
+        options_container.addView(this.create_option(id,name, 22, 100));
+    }
+
+
+
+    @SuppressLint("NewApi")
+    protected LinearLayout create_option_tile(String id, String name, int age, int match_score){
 
         //create new linear layout
         LinearLayout option= new LinearLayout(this);
@@ -80,7 +149,7 @@ public class Options extends AppCompatActivity {
         view_profile_button.setTextColor(getResources().getColor(R.color.white));
         view_profile_button.setBackground(getResources().getDrawable(R.drawable.btn_dark_gradient));
         //id needs to be set final for button
-        final int btn_id=id;
+        final String btn_id=id;
         view_profile_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 //call check_and_update method to determine validity of move and update board
@@ -121,16 +190,60 @@ public class Options extends AppCompatActivity {
     //////Button Handlers
     ///////////////////////////
 
-    protected void handle_view_profile(int id){
+    protected void handle_view_profile(String id){
         Intent view_profile= new Intent(Options.this, ViewOption.class );
         view_profile.putExtra("view_profile_id", ""+id);
         startActivity(view_profile);
     }
 
 
-    protected void handle_like(int id){
+    protected void handle_like(String id){
         //TODO: insert like into like table
-        Log.v("MYTAG", "liked id: "+id);
+        // add in like and update list of ids, you've liked
+        final String to_add = id;
+        reff = FirebaseDatabase.getInstance().getReference().child("Likes");
+        reff.child(email).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() == null) {
+                    reff.child(email).setValue(to_add);
+                }else{
+                    String current_like_List = dataSnapshot.getValue().toString();
+                    if(!current_like_List.contains(to_add)){
+                        reff.child(email).setValue(current_like_List + " " + to_add);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        reff.child(to_add).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() == null) {
+                    System.out.println("No match");
+                }else{
+                    String current_like_List = dataSnapshot.getValue().toString();
+                    if(current_like_List.contains(email)){
+                        Toast.makeText(getApplicationContext(),"New Match!",Toast.LENGTH_SHORT).show();
+                        addMatch(email, to_add);
+                        addMatch(to_add, email);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
     protected void handle_home(View v){
@@ -153,10 +266,10 @@ public class Options extends AppCompatActivity {
         v.setPadding(5,5,5,5);
     }
 
-    protected ProfileOption create_option(int id, String name, int age, double score){
+    protected ProfileOption create_option(String id, String name, int age, double score){
         ProfileOption option= new ProfileOption(this);
         option.set_all(name, age, score);
-        final int btn_id=id;
+        final String btn_id=id;
         option.get_like_button().setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 //call check_and_update method to determine validity of move and update board
@@ -172,5 +285,32 @@ public class Options extends AppCompatActivity {
         });
         return option;
     }
+
+    public void addMatch(String key,  String add_to_match_list){
+        reff = FirebaseDatabase.getInstance().getReference().child("Matches");
+        final String key_final = key;
+        final String add_final = add_to_match_list;
+        reff.child(key).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() == null) {
+                    reff.child(key_final).setValue(add_final);
+                }else{
+                    String current_match_List = dataSnapshot.getValue().toString();
+                    if(!current_match_List.contains(add_final)){
+                        reff.child(key_final).setValue(current_match_List + " " + add_final);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 }
 

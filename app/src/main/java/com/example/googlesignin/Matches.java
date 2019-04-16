@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Matches extends AppCompatActivity {
-
+    String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,6 +14,7 @@ public class Matches extends AppCompatActivity {
     }
 
     protected void handle_home(View v){
+        user = getIntent().getExtras().getString("email");
         startActivity(new Intent(Matches.this, Home.class));
     }
 }
