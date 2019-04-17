@@ -9,50 +9,36 @@ import android.widget.Button;
 
 public class ViewMatch extends AppCompatActivity {
 
-    boolean has_liked;
+    String other_id;
+    String cur_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_option);
 
-        /**Set Like Button message
-         * query in match table: has current user liked this user before?
-         *  if yes=> set button text to say "Unlike"
-         *  if no=> set button text to say "Like"
-         *
-         **/
-        Button like_btn= (Button) findViewById(R.id.btn_like);
-        //do some querying and if statements
-        has_liked=false;
-        //set text based on liked value
-        this.like_btn_text();
-
-
         //testing if info is being passed
-        String test="Id passed in: "+getIntent().getStringExtra("view_profile_id");
-        Log.v("MYTAG", test);
+        other_id= getIntent().getStringExtra("other_id");
+        Log.v("MYTAG", other_id);
     }
 
-    protected void handle_like(View v){
-        //insert a like into the like table where the liker is the current user and likee is the profile viewd
+    protected void handle_unmatch(View v){
+        //TODO: deletes match or deletes likes
+        Log.v("btn","unmatch");
 
-        //flip value of has_liked boolean
-        has_liked=!has_liked;
-
-        //update the like buttons text
-        this.like_btn_text();
+        //takes back to matches page
+        startActivity(new Intent(ViewMatch.this, Matches.class));
 
     }
 
-    protected void like_btn_text(){
-        Button like_btn= (Button) findViewById(R.id.btn_like);
-        if(has_liked){
-            like_btn.setText("Unlike");
-        }else{
-            like_btn.setText("Like");
-        }
+    protected void handle_invite(View v){
+        Log.v("btn", "send date invite");
+
+        //create new intent for date and set extras to reflect current user and date invitee
+        Intent intent= new Intent(ViewMatch.this, DateInput.class);
+        intent.putExtra("other_id", other_id );
 
     }
+
 
     protected void handle_back_btn(View v){
         startActivity(new Intent(ViewMatch.this, Matches.class));

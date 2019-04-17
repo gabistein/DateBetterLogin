@@ -89,8 +89,21 @@
         <item>Both</item>
     </string-array>
 
-    <string-arr
+    <string-array name="identify_as">
+        <item>None</item>
+        <item>Woman</item>
+        <item>Man</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="interested_in">
+        <item>None</item>
+        <item>Men</item>
+        <item>Women</item>
+        <item>Both</item>
+    </string-array>
     <string name="bio_done">Done</string>
     <string name="title_activity_test">test</string>
+    <string name="title_activity_dates">Dates</string>
 
 </resources>

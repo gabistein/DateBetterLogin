@@ -31,9 +31,9 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         // figure out how to get actual sign in id
-        signInId = getIntent().getExtras().getString("email");
-        System.out.println("Sign In ID: " + signInId);
-        currentProfile = new Traits(signInId);
+//        signInId = getIntent().getExtras().getString("email");
+//        System.out.println("Sign In ID: " + signInId);
+//        currentProfile = new Traits(signInId);
 
         //set bio_val edittext to allow for done button
         EditText bio_val= (EditText) findViewById(R.id.bio_val);
@@ -121,5 +121,24 @@ public class EditProfile extends AppCompatActivity {
         db.child("politics").setValue(politics);
         db.child("smoking").setValue(smoking);
         db.child("star_sign").setValue(star_sign);
+    }
+
+
+    ////////////////////////////
+    //Navigation button handlers
+    ////////////////////////////
+
+    /**name: handle_back_btn
+     * action: takes to previous page
+     * */
+    protected void handle_back_btn(View v){
+        startActivity(new Intent(EditProfile.this, Profile.class));
+    }
+
+    /**name: handle_home
+     * action: takes to home page
+     * */
+    protected void handle_home(View v){
+        startActivity(new Intent(EditProfile.this, Home.class));
     }
 }

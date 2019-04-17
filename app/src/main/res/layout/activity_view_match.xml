@@ -148,9 +148,91 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/g_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/gender" />
+
+                    <TextView
+                        android:id="@+id/g_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Identifies As"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/g_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:text="Value"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trait_background"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <ImageView
+                        android:id="@+id/o_img"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/heart" />
+
+                    <TextView
+                        android:id="@+id/o_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:padding="5dp"
+                        android:text="Interested In"
+                        android:textColor="#3923C6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/o_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4"
+                        android:text="Value"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -167,8 +249,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/moon_stars"
-                        android:scaleType="fitCenter" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/moon_stars" />
 
                     <TextView
                         android:id="@+id/ss_name"
@@ -206,7 +288,8 @@
                         android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/smile" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/smile" />
 
                     <TextView
                         android:id="@+id/mb_name"
@@ -245,7 +328,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/new_paw" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/new_paw" />
 
                     <TextView
                         android:id="@+id/pet_name"
@@ -284,7 +368,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/cheers" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/cheers" />
 
 
                     <TextView
@@ -324,7 +409,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/cigarette" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/cigarette" />
 
                     <TextView
                         android:id="@+id/smoke_name"
@@ -363,7 +449,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/capitol" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/capitol" />
 
                     <TextView
                         android:id="@+id/politics_name"
@@ -402,7 +489,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/planet_earth" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/planet_earth" />
 
                     <TextView
                         android:id="@+id/earth_name"
@@ -441,7 +529,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/growth" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/growth" />
 
                     <TextView
                         android:id="@+id/farmer_name"
@@ -483,7 +572,7 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:scaleType="centerInside"
-                        app:srcCompat="@drawable/dance" />
+                        android:src="@drawable/dance" />
 
                     <TextView
                         android:id="@+id/night_name"
@@ -539,7 +628,7 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="10dp"
                 android:background="@drawable/btn_dark_gradient"
-                android:onClick="handle_like"
+                android:onClick="handle_invite"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="Set a Date"

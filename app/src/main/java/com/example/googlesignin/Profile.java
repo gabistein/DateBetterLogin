@@ -33,6 +33,12 @@ public class Profile extends AppCompatActivity {
     protected void handle_home(View v){
         startActivity(new Intent(Profile.this, Home.class));
     }
+
+    protected void handle_back_btn(View v){
+        startActivity(new Intent(Profile.this, Home.class));
+    }
+
+
 }
 
 

@@ -80,6 +80,10 @@ public class Home extends AppCompatActivity {
                 });
     }
 
+    /////////////////////
+    //Navigation Handlers
+    /////////////////////
+
     protected void handle_profile(View v){
         startActivity(new Intent(Home.this, Profile.class));
     }
@@ -92,5 +96,8 @@ public class Home extends AppCompatActivity {
         startActivity(new Intent(Home.this, Matches.class));
     }
 
+    protected void handle_dates(View v){
+        startActivity(new Intent(Home.this, Dates.class));
+    }
 
 }
