@@ -47,40 +47,43 @@ public class Profile extends AppCompatActivity {
         reff.child(email).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               values = dataSnapshot.getValue().toString();
-               System.out.println(values);
-               value_array = values.split(",");
+               try {
+                   values = dataSnapshot.getValue().toString();
+                   System.out.println(values);
+                   value_array = values.split(",");
 
-               // Set name -- not updating after edit profile?
-               setValue(5,R.id.profile_name);
-
-
-               // Set Bio
-                setValue(6,R.id.bio_val);
+                   // Set name -- not updating after edit profile?
+                   setValue(5, R.id.profile_name);
 
 
-                // Set star sign
-                setValue(1,R.id.ss_val);
+                   // Set Bio
+                   setValue(6, R.id.bio_val);
 
 
-                // Set MB
-                setValue(3, R.id.mb_val);
+                   // Set star sign
+                   setValue(1, R.id.ss_val);
 
 
-                // Set pet
-                String pet = value_array[11].substring((value_array[11]).indexOf("=") +1, (value_array[11]).indexOf(("}")));
-                TextView pet_text = (TextView) findViewById(R.id.pet_val);
-                pet_text.setText(pet);
+                   // Set MB
+                   setValue(3, R.id.mb_val);
 
-                // set drinking
-                setValue(2, R.id.drink_val);
 
-                //set smoking
-                setValue(4, R.id.smoke_val);
+                   // Set pet
+                   String pet = value_array[11].substring((value_array[11]).indexOf("=") + 1, (value_array[11]).indexOf(("}")));
+                   TextView pet_text = (TextView) findViewById(R.id.pet_val);
+                   pet_text.setText(pet);
 
-                // set politics
-                setValue(0, R.id.politics_val);
+                   // set drinking
+                   setValue(2, R.id.drink_val);
 
+                   //set smoking
+                   setValue(4, R.id.smoke_val);
+
+                   // set politics
+                   setValue(0, R.id.politics_val);
+               }catch(Exception e){
+                   System.out.println("hit a null");
+               }
 
 
             }
@@ -110,6 +113,11 @@ public class Profile extends AppCompatActivity {
     protected void handle_home(View v){
         startActivity(new Intent(Profile.this, Home.class));
     }
+
+    protected void handle_back_btn(View v){
+        startActivity(new Intent(Profile.this, Home.class));
+    }
+
 
     public void setValue(int i, int text_view_id){
         String name = value_array[i].substring(value_array[i].indexOf("=") + 1);

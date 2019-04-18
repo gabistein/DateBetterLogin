@@ -67,12 +67,14 @@ public class Options extends AppCompatActivity {
             }
         });
 
+
         options_container= (LinearLayout) findViewById(R.id.options_container);
         email = getIntent().getExtras().getString("email").substring(0,getIntent().getExtras().getString("email").indexOf('@'));
 
 
         Log.v("MYTAG", "trying to add layout in oncreate");
     }
+
 
     public void parseValues(String values){
         String[] traits = values.split(",");
@@ -186,17 +188,23 @@ public class Options extends AppCompatActivity {
     }
 
 
-    ///////////////////////////
-    //////Button Handlers
-    ///////////////////////////
 
+    ///////////////////////////
+    //Navigation Button Handlers
+    ///////////////////////////
+    /**name: handle_view_profile
+     * action: opens ViewOption for specific id
+     * */
     protected void handle_view_profile(String id){
         Intent view_profile= new Intent(Options.this, ViewOption.class );
-        view_profile.putExtra("view_profile_id", ""+id);
+        view_profile.putExtra("other_id", ""+id);
         startActivity(view_profile);
     }
 
 
+    /**name: handle_like
+     * action: adds a like to the database for id to id
+     * */
     protected void handle_like(String id){
         //TODO: insert like into like table
         // add in like and update list of ids, you've liked
@@ -246,25 +254,46 @@ public class Options extends AppCompatActivity {
 
     }
 
+    /**name: handle_home
+     * action: takes to home page
+     * */
     protected void handle_home(View v){
         startActivity(new Intent(Options.this, Home.class));
     }
+
+    /**name: handle_home
+     * action: takes to previous page
+     * */
+    protected void handle_back_btn(View v){
+        startActivity(new Intent(Options.this, Home.class));
+    }
+
+
 
 
     ///////////////////////////
     //////Helpers
     ///////////////////////////
+    /**name: handle_home
+     * action: clears options
+     * */
     protected void clear_options(){
         LinearLayout options_container= (LinearLayout) findViewById(R.id.options_container);
+        //TODO: clear all options
 
     }
 
+
+    /**name: create_option
+     * action: creates a profile option object
+     * */
     protected void set_layout_params(View v){
         ViewGroup.MarginLayoutParams margins= new ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.WRAP_CONTENT,ViewGroup.MarginLayoutParams.WRAP_CONTENT);
         margins.setMargins(10,10,10,10);
         v.setLayoutParams(margins);
         v.setPadding(5,5,5,5);
     }
+
 
     protected ProfileOption create_option(String id, String name, int age, double score){
         ProfileOption option= new ProfileOption(this);

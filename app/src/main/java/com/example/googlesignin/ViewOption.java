@@ -10,6 +10,7 @@ import android.widget.Button;
 public class ViewOption extends AppCompatActivity {
 
     boolean has_liked;
+    String other_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +30,8 @@ public class ViewOption extends AppCompatActivity {
 
 
         //testing if info is being passed
-        String test="Id passed in: "+getIntent().getStringExtra("view_profile_id");
-        Log.v("MYTAG", test);
+        other_id= getIntent().getStringExtra("other_id");
+        Log.v("MYTAG", other_id);
     }
 
     protected void handle_like(View v){
@@ -53,7 +54,13 @@ public class ViewOption extends AppCompatActivity {
         }
 
     }
+
+
     protected void handle_back_btn(View v){
-        startActivity(new Intent(ViewOption.this, Matches.class));
+        startActivity(new Intent(ViewOption.this, Options.class));
+    }
+
+    protected void handle_home(View v){
+        startActivity(new Intent(ViewOption.this, Home.class));
     }
 }

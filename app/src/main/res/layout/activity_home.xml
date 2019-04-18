@@ -13,6 +13,7 @@
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
         android:layout_margin="10dp"
         android:background="@drawable/home_btn_background"
         android:text="Log Out"
@@ -20,84 +21,93 @@
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:text="Welcome, User"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-thin" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:background="@drawable/pic_background"
-        android:padding="7dp"
-        app:srcCompat="@drawable/gabi" />
-
-    <Button
-        android:id="@+id/btn_view_prof"
-        style="@style/menu_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_p1"
-        android:onClick="handle_profile"
-        android:text="View Profile"
-        android:textAllCaps="false" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="2">
 
-        <Button
-            android:id="@+id/btn_options"
-            style="@style/menu_btn"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/btn_p2"
-            android:onClick="handle_options"
-            android:text="Your Options"
-            android:textAllCaps="false" />
+            android:gravity="center"
+            android:text="Welcome, User"
+            android:textColor="@android:color/white"
+            android:textSize="50sp"
+            android:textStyle="bold|italic"
+            app:fontFamily="sans-serif-thin" />
 
-        <Button
-            android:id="@+id/btn_matches"
-            style="@style/menu_btn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/btn_p3"
-            android:onClick="handle_matches"
-            android:text="Your Matches"
-            android:textAllCaps="false" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_view_prof"
+                style="@style/menu_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_p1"
+                android:onClick="handle_profile"
+                android:text="View Profile"
+                android:textAllCaps="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_options"
+                    style="@style/menu_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_p2"
+                    android:onClick="handle_options"
+                    android:text="Your Options"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/btn_matches"
+                    style="@style/menu_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_p3"
+                    android:onClick="handle_matches"
+                    android:text="Your Matches"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_dates"
+                style="@style/menu_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_p4"
+                android:onClick="handle_dates"
+                android:text="Dates"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_dates"
-        style="@style/menu_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_p4"
-        android:text="Dates"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white" />
 
 </LinearLayout>

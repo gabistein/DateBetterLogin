@@ -35,6 +35,7 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         // figure out how to get actual sign in id
+
         signInId = getIntent().getExtras().getString("email");
         System.out.println("Sign In ID: " + signInId);
         currentProfile = new Traits(signInId);
@@ -101,39 +102,42 @@ public class EditProfile extends AppCompatActivity {
         reff.child(email).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String values = dataSnapshot.getValue().toString();
-                System.out.println(values);
-                value_array = values.split(",");
+                try {
+                    String values = dataSnapshot.getValue().toString();
+                    System.out.println(values);
+                    value_array = values.split(",");
 
-                // Set name
-                setHint(5,R.id.profile_name);
-
-
-                // Set Bio
-                setHint(6,R.id.bio_val);
-
-                // how to set spinner value
-                setSpinner(1,R.array.star_options,R.id.ss_val);
-
-                // set mb
-                setSpinner(3, R.array.mb_options, R.id.mb_val);
+                    // Set name
+                    setHint(5, R.id.profile_name);
 
 
-                //set drinking
-                setSpinner(2, R.array.drink_options, R.id.drink_val);
+                    // Set Bio
+                    setHint(6, R.id.bio_val);
+
+                    // how to set spinner value
+                    setSpinner(1, R.array.star_options, R.id.ss_val);
+
+                    // set mb
+                    setSpinner(3, R.array.mb_options, R.id.mb_val);
+
+
+                    //set drinking
+                    setSpinner(2, R.array.drink_options, R.id.drink_val);
 
 //                // set smoking
-               setSpinner(4,R.array.smoke_options,R.id.smoke_val);
+                    setSpinner(4, R.array.smoke_options, R.id.smoke_val);
 //
 //                // set politicis
-               setSpinner(0,R.array.politics_options,R.id.politics_val);
+                    setSpinner(0, R.array.politics_options, R.id.politics_val);
 //
 ////                // Set pet
 
-                String[] pet_options = getResources().getStringArray(R.array.pet_options);
-                Spinner spinner = (Spinner) findViewById(R.id.pet_val);
-                spinner.setSelection(findIndex(pet_options,value_array[11].substring((value_array[11]).indexOf("=") +1, (value_array[11]).indexOf(("}")))));
-
+                    String[] pet_options = getResources().getStringArray(R.array.pet_options);
+                    Spinner spinner = (Spinner) findViewById(R.id.pet_val);
+                    spinner.setSelection(findIndex(pet_options, value_array[11].substring((value_array[11]).indexOf("=") + 1, (value_array[11]).indexOf(("}")))));
+                }catch(Exception e){
+                    System.out.println("hit a null in edit");
+                }
 //
 
 
@@ -208,5 +212,24 @@ public class EditProfile extends AppCompatActivity {
             }
         }
         return -1;
+    }
+
+
+    ////////////////////////////
+    //Navigation button handlers
+    ////////////////////////////
+
+    /**name: handle_back_btn
+     * action: takes to previous page
+     * */
+    protected void handle_back_btn(View v){
+        startActivity(new Intent(EditProfile.this, Profile.class));
+    }
+
+    /**name: handle_home
+     * action: takes to home page
+     * */
+    protected void handle_home(View v){
+        startActivity(new Intent(EditProfile.this, Home.class));
     }
 }

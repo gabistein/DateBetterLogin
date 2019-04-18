@@ -80,6 +80,10 @@ public class Home extends AppCompatActivity {
                 });
     }
 
+    /////////////////////
+    //Navigation Handlers
+    /////////////////////
+
     protected void handle_profile(View v){
         Intent to_profile = new Intent(Home.this, Profile.class);
         to_profile.putExtra("email", email);
@@ -98,5 +102,8 @@ public class Home extends AppCompatActivity {
         startActivity(to_matches);
     }
 
+    protected void handle_dates(View v){
+        startActivity(new Intent(Home.this, Dates.class));
+    }
 
 }
