@@ -21,7 +21,7 @@ public class Home extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     GoogleSignInClient mGoogleSignInClient;
-
+    String email;
 
     @Override
     protected void onStart() {
@@ -35,7 +35,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         button = (Button) findViewById(R.id.btn_logout);
         mAuth=FirebaseAuth.getInstance();
-        // mGoogleSignInClient.getSignInIntent();
+        email = mAuth.getCurrentUser().getEmail();
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -85,15 +85,21 @@ public class Home extends AppCompatActivity {
     /////////////////////
 
     protected void handle_profile(View v){
-        startActivity(new Intent(Home.this, Profile.class));
+        Intent to_profile = new Intent(Home.this, Profile.class);
+        to_profile.putExtra("email", email);
+        startActivity(to_profile);
     }
 
     protected void handle_options(View v){
-        startActivity(new Intent(Home.this,Options.class));
+        Intent to_options = new Intent(Home.this, Options.class);
+        to_options.putExtra("email", email);
+        startActivity(to_options);
     }
 
     protected void handle_matches(View v){
-        startActivity(new Intent(Home.this, Matches.class));
+        Intent to_matches = new Intent(Home.this, Matches.class);
+        to_matches.putExtra("email", email);
+        startActivity(to_matches);
     }
 
     protected void handle_dates(View v){

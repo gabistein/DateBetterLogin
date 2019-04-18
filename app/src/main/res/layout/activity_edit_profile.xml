@@ -123,19 +123,18 @@
                         app:fontFamily="sans-serif-condensed" />
 
                     <EditText
-                        android:id="@+id/profile_name"
+                        android:id="@+id/birthday"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:gravity="left"
-                        android:hint="enter age "
+                        android:hint="enter age"
                         android:imeOptions="actionDone"
-                        android:inputType="date|number"
+                        android:inputType="text"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/white"
                         android:textSize="18sp"
-                        android:textStyle="normal"
                         app:fontFamily="sans-serif-condensed" />
                 </LinearLayout>
 

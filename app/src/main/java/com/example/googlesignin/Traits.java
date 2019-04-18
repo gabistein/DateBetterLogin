@@ -2,6 +2,9 @@ package com.example.googlesignin;
 
 public class Traits {
 
+    private String preference;
+    private String gender;
+    private int age;
     private String name;
     private String bio;
     private String star_sign;
@@ -27,9 +30,12 @@ public class Traits {
         this.politics = "";
         this.farmer = "";
         this. night_in = "";
+        this.preference="";
+        this.gender ="";
+        this.age = 0;
     }
 
-    public Traits(String id, String name, String bio, String star_sign, String mb_type, String pet, String drinking, String smoking, String politics, String farmer, String earth_flat, String night_in){
+    public Traits(String gender, String preference, int age, String id, String name, String bio, String star_sign, String mb_type, String pet, String drinking, String smoking, String politics, String farmer, String earth_flat, String night_in){
         this.id = id;
         this.name = name;
         this.bio = bio;
@@ -41,6 +47,9 @@ public class Traits {
         this.politics = politics;
         this.farmer = farmer;
         this. night_in = night_in;
+        this.gender = gender;
+        this.preference = preference;
+        this.age = age;
     }
 
     public String getId() {
@@ -52,6 +61,29 @@ public class Traits {
     }
 
 
+    public String getPreference() {
+        return preference;
+    }
+
+    public void setPreference(String preference) {
+        this.preference = preference;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public String getName() {
         return name;

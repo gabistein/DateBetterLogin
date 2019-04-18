@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class Matches extends AppCompatActivity {
-
+    String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class Matches extends AppCompatActivity {
      * action: takes to home page
      * */
     protected void handle_home(View v){
+        user = getIntent().getExtras().getString("email");
         startActivity(new Intent(Matches.this, Home.class));
     }
 
