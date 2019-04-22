@@ -11,6 +11,7 @@ public class ViewMatch extends AppCompatActivity {
 
     String other_id;
     String cur_id;
+    String from;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,7 @@ public class ViewMatch extends AppCompatActivity {
 
         //testing if info is being passed
         other_id= getIntent().getStringExtra("other_id");
+        from=getIntent().getStringExtra("from");
         Log.v("MYTAG", other_id);
     }
 
@@ -41,7 +43,16 @@ public class ViewMatch extends AppCompatActivity {
 
 
     protected void handle_back_btn(View v){
-        startActivity(new Intent(ViewMatch.this, Matches.class));
+        if(from.equals("Matches")){
+            startActivity(new Intent(ViewMatch.this, Matches.class));
+        }else if(from.equals("ViewDate")){
+            //TODO: pass in View Date ID
+            int date_id=getIntent().getIntExtra("date_id", 0);
+            Intent viewdate=new Intent(ViewMatch.this,ViewDate.class);
+            viewdate.putExtra("date_id", date_id);
+            startActivity(viewdate);
+        }
+
     }
 
     protected void handle_home(View v){

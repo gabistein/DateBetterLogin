@@ -45,6 +45,7 @@ public class Matches extends AppCompatActivity {
     protected void handle_view_profile(String id){
         Intent view_profile= new Intent(Matches.this, ViewMatch.class );
         view_profile.putExtra("other_id", ""+id);
+        view_profile.putExtra("from", "Matches");
         startActivity(view_profile);
     }
 

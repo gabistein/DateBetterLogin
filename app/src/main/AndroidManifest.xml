@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ViewDate"></activity>
         <activity
             android:name=".Dates"
             android:label="@string/title_activity_dates"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".DateInput" />
         <activity android:name=".ViewMatch" />
         <activity android:name=".Matches" />
