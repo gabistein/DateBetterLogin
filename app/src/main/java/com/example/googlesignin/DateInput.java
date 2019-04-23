@@ -3,6 +3,8 @@ package com.example.googlesignin;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,21 +13,40 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Calendar;
 import java.util.Date;
 
 public class DateInput extends AppCompatActivity {
-    protected EditText time_text, date_text, map_text;
-    protected Button time_btn, date_btn;
-    String email,from;
 
+    protected EditText time_text, date_text, map_text, message_text;
+    protected Button time_btn, date_btn;
+
+    String email,from;
+    public DateTraits dateDetails;
+    DatabaseReference reff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_input);
 
+        // INTENT EXTRAS AFTER MATCHING
+
         email=getIntent().getStringExtra("email");
-        from=getIntent().getStringExtra("from");
+        if(email.contains("@")){
+            email = email.substring(0, email.indexOf("@"));
+        }
+        from=getIntent().getStringExtra("other_id");
+        if(from.contains("@")){
+            from = from.substring(0, from.indexOf("@"));
+        }
+
 
         //Time
         time_text= (EditText)findViewById(R.id.text_set_time);
@@ -36,6 +57,7 @@ public class DateInput extends AppCompatActivity {
                 handle_time();
             }
         });
+
 
         //Date
         date_text= (EditText)findViewById(R.id.text_set_date);
@@ -52,6 +74,7 @@ public class DateInput extends AppCompatActivity {
 
         //Map
         map_text= (EditText)findViewById(R.id.text_set_time);
+
 
 
     }
@@ -133,11 +156,31 @@ public class DateInput extends AppCompatActivity {
 
     protected void handle_invite(View v){
         Intent intent = new Intent(DateInput.this, Matches.class);
+        String date = date_text.getText().toString();
+        String time = time_text.getText().toString();
+        String message = message_text.getText().toString();
+        String map = map_text.getText().toString();
+        getProfileName(from, email);
         //TODO: save whatever to the db, put extras into db
-
+        dateDetails = new DateTraits(email+from, email, "from_name", from, "email_name", date, time, map, message, "pending" );
         //TODO: depending on from go to mathes or dates
 
-        startActivity(intent);
+        reff = FirebaseDatabase.getInstance().getReference().child("Dates");
+        reff.orderByChild("date_id").equalTo(email+from).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                updateDateProfile(reff.child(email+from), dateDetails.getInviter_id(), dateDetails.getInviter_name(), dateDetails.getInvitee_id(), dateDetails.getInvitee_name(), dateDetails.getDate(), dateDetails.getTime(), dateDetails.getLocation(), dateDetails.getMessage(), dateDetails.getStatus() );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        // startActivity(intent);
+
     }
 
     protected void handle_back_btn(View v){
@@ -163,6 +206,62 @@ public class DateInput extends AppCompatActivity {
         to_home.putExtra("email", email);
         startActivity(to_home);
     }
+    public void updateDateProfile(DatabaseReference db, String inviter_id, String inviter_name, String invitee_id, String invitee_name, String date, String time, String location, String message, String status ){
+        db.child("inviter_id").setValue(inviter_id); // identifies as
+        db.child("inviter_name").setValue(dateDetails.getInviter_name()); // interested in
+        db.child("invitee_id").setValue(invitee_id); // star sign
+        db.child("invitee_name").setValue(dateDetails.getInvitee_name()); // meyers briggs
+        db.child("date").setValue(date); // pet
+        db.child("time").setValue(time); // drinking
+        db.child("location").setValue(location); // smoking
+        db.child("message").setValue(message); // politics
+        db.child("status").setValue(status); // earth
+
+
+    }
+
+    public void getProfileName(String invitee_id, String inviter_id){
+        final String final_invitee_id = invitee_id;
+        final String final_inviter_id = inviter_id;
+
+        reff = FirebaseDatabase.getInstance().getReference().child("Profile");
+        reff.orderByKey().addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                // System.out.println(dataSnapshot.getValue().toString());
+                String all_vals = dataSnapshot.getValue().toString();
+                String[] all_vals_array = all_vals.split(",");
+                String name = all_vals_array[10].substring(all_vals_array[10].indexOf("=") + 1);
+                if(final_invitee_id.contains(dataSnapshot.getKey())){
+                    dateDetails.setInvitee_name(name);
+                }else if(final_inviter_id.contains(dataSnapshot.getKey())){
+
+                    dateDetails.setInviter_name(name);
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
 
 }

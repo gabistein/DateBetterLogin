@@ -36,7 +36,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Welcome, User"
+            android:text="Welcome"
             android:textColor="@android:color/white"
             android:textSize="50sp"
             android:textStyle="bold|italic"
