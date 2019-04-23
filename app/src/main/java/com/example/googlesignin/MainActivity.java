@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = (SignInButton) findViewById(R.id.sign_in_button);
-        make_account_button = (Button) findViewById(R.id.make_account);
+        // make_account_button = (Button) findViewById(R.id.make_account);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        make_account_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
+        // make_account_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                signIn();
+//            }
+//        });
 /*
 * Intent i = new Intent(this, ToClass.class);
 i.putExtra("epuzzle", easyPuzzle);
@@ -78,11 +78,12 @@ startActivity(i); */
                     String email = mAuth.getCurrentUser().getEmail();
                     newUser.putExtra("email", email);
                     returning.putExtra("email", email);
-                    if( metadata.getLastSignInTimestamp() < metadata.getCreationTimestamp() + 10){
-                        startActivity(newUser);
-                    }else {
-                        startActivity(returning);
-                    }
+                    startActivity(newUser);
+//                    if( metadata.getLastSignInTimestamp() < metadata.getCreationTimestamp() + 10){
+//                        startActivity(newUser);
+//                    }else {
+//                        startActivity(returning);
+//                    }
                 }
             }
         };

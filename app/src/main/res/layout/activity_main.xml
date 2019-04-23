@@ -27,16 +27,16 @@
 
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/make_account"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:text="Make Account"
-        android:background="#FFFFFF"
-        android:textColor="#515356"
-       />
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/make_account"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:text="Make Account"-->
+        <!--android:background="#FFFFFF"-->
+        <!--android:textColor="#515356"-->
+       <!--/>-->
 
 
 

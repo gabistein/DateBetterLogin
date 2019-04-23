@@ -4,7 +4,7 @@ public class Traits {
 
     private String preference;
     private String gender;
-    private int age;
+    private String age;
     private String name;
     private String bio;
     private String star_sign;
@@ -32,10 +32,10 @@ public class Traits {
         this. night_in = "";
         this.preference="";
         this.gender ="";
-        this.age = 0;
+        this.age = "";
     }
 
-    public Traits(String gender, String preference, int age, String id, String name, String bio, String star_sign, String mb_type, String pet, String drinking, String smoking, String politics, String farmer, String earth_flat, String night_in){
+    public Traits(String gender, String preference, String age, String id, String name, String bio, String star_sign, String mb_type, String pet, String drinking, String smoking, String politics, String farmer, String earth_flat, String night_in){
         this.id = id;
         this.name = name;
         this.bio = bio;
@@ -77,11 +77,11 @@ public class Traits {
         this.gender = gender;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
