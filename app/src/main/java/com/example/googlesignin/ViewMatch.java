@@ -18,18 +18,22 @@ import com.google.firebase.database.ValueEventListener;
 public class ViewMatch extends AppCompatActivity {
 
     String other_id;
-    String cur_id;
+
     DatabaseReference reff;
     String values;
     String[] value_array;
+    String email;
+    String from;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_option);
+        setContentView(R.layout.activity_view_match);
+        email=getIntent().getStringExtra("email");
 
         //testing if info is being passed
         other_id= getIntent().getStringExtra("other_id");
-        cur_id = getIntent().getStringExtra("email");
+        email = getIntent().getStringExtra("email");
         populate_profile();
         Log.v("MYTAG", other_id);
     }
@@ -38,8 +42,11 @@ public class ViewMatch extends AppCompatActivity {
         //TODO: deletes match or deletes likes
         Log.v("btn","unmatch");
 
-        //takes back to matches page
-        startActivity(new Intent(ViewMatch.this, Matches.class));
+        //TODO: add pop up to confirm un match
+        Intent to_matches= new Intent(ViewMatch.this, Matches.class);
+        to_matches.putExtra("email",email);
+
+        startActivity(to_matches);
 
     }
 
@@ -47,28 +54,34 @@ public class ViewMatch extends AppCompatActivity {
         Log.v("btn", "send date invite");
 
         //create new intent for date and set extras to reflect current user and date invitee
-        Intent intent= new Intent(ViewMatch.this, DateInput.class);
-        intent.putExtra("other_id", other_id );
+        Intent to_date_input= new Intent(ViewMatch.this, DateInput.class);
+        to_date_input.putExtra("from", "ViewMatch");
+        to_date_input.putExtra("other_id", other_id );
+        to_date_input.putExtra("email", email);
+        startActivity(to_date_input);
 
     }
 
 
     protected void handle_back_btn(View v){
         if(getIntent().getStringExtra("came_from").equals("options")){
-            System.out.println("Current id going back from viewing options" + cur_id);
+            System.out.println("Current id going back from viewing options" + email);
             Intent back = new Intent(ViewMatch.this, Options.class);
-            back.putExtra("email", cur_id);
+            back.putExtra("email", email);
             startActivity(back);
         }else {
             Intent back = new Intent(ViewMatch.this, Matches.class);
-            back.putExtra("email", cur_id);
+            back.putExtra("email", email);
             startActivity(back);
+
         }
 
     }
 
     protected void handle_home(View v){
-        startActivity(new Intent(ViewMatch.this, Home.class));
+        Intent to_home=new Intent(ViewMatch.this, Home.class);
+        to_home.putExtra("email",email);
+        startActivity(to_home);
     }
 
 

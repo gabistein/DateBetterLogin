@@ -51,7 +51,7 @@
             <Button
                 android:id="@+id/btn_view_prof"
                 style="@style/menu_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -63,16 +63,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_options"
                     style="@style/menu_btn"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:layout_weight="1"
                     android:background="@drawable/btn_p2"
                     android:onClick="handle_options"
                     android:text="Your Options"
@@ -81,11 +81,10 @@
                 <Button
                     android:id="@+id/btn_matches"
                     style="@style/menu_btn"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:layout_weight="1"
                     android:background="@drawable/btn_p3"
                     android:onClick="handle_matches"
                     android:text="Your Matches"
@@ -96,7 +95,7 @@
             <Button
                 android:id="@+id/btn_dates"
                 style="@style/menu_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -105,6 +104,7 @@
                 android:text="Dates"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -180,6 +180,7 @@
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.opened" value="6" />
+<<<<<<< HEAD
 =======
       <usages-collector id="statistics.lifecycle.project">
         <counts>
@@ -190,64 +191,90 @@
           <entry key="project.open.time.37" value="1" />
           <entry key="project.opened" value="4" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
           <entry key="gradle" value="3" />
           <entry key="java" value="76" />
           <entry key="json" value="2" />
           <entry key="png" value="1" />
           <entry key="xml" value="61" />
+<<<<<<< HEAD
 =======
           <entry key="class" value="1" />
           <entry key="java" value="28" />
           <entry key="xml" value="10" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
           <entry key="Groovy" value="3" />
           <entry key="Image" value="1" />
           <entry key="JAVA" value="76" />
           <entry key="JSON" value="2" />
           <entry key="XML" value="61" />
+<<<<<<< HEAD
 =======
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="28" />
           <entry key="XML" value="10" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
           <entry key="gradle" value="30" />
           <entry key="java" value="9876" />
           <entry key="txt" value="616" />
           <entry key="xml" value="161" />
+<<<<<<< HEAD
 =======
           <entry key="dummy" value="7" />
           <entry key="java" value="6710" />
           <entry key="xml" value="1" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
           <entry key="Groovy" value="30" />
           <entry key="JAVA" value="9876" />
           <entry key="PLAIN_TEXT" value="616" />
           <entry key="XML" value="161" />
+<<<<<<< HEAD
 =======
           <entry key="JAVA" value="6710" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="XML" value="1" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
         </counts>
       </usages-collector>
     </session>
@@ -256,6 +283,7 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Options.java">
+<<<<<<< HEAD
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
             <state relative-caret-position="161">
@@ -279,21 +307,34 @@
                 <element signature="e#7664#7665#0" expanded="true" />
               </folding>
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
+>>>>>>> dates
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewMatch.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="395">
               <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Matches.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
+>>>>>>> dates
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewDate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="718">
@@ -312,11 +353,18 @@
                 <element signature="method#onCancelled#0;class#5558:6359" />
               </folding>
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewMatch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+>>>>>>> dates
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ProfileOption.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -337,11 +385,18 @@
             <state relative-caret-position="193">
               <caret line="56" selection-start-line="56" selection-end-line="56" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewDate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="718">
+              <caret line="214" selection-start-line="214" selection-end-line="214" />
+>>>>>>> dates
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Profile.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -353,6 +408,21 @@
             <state relative-caret-position="476">
               <caret line="50" selection-start-line="50" selection-end-line="50" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ProfileOption.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewOption.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+>>>>>>> dates
             </state>
           </provider>
         </entry>
@@ -367,6 +437,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Profile.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="935">
               <caret line="58" column="55" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
               <folding>
@@ -375,6 +446,19 @@
                 <element signature="e#1217#1218#0" expanded="true" />
               </folding>
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+            <state relative-caret-position="253">
+              <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/EditProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6">
+              <caret line="102" column="59" selection-start-line="102" selection-start-column="59" selection-end-line="102" selection-end-column="59" />
+>>>>>>> dates
             </state>
           </provider>
         </entry>
@@ -388,6 +472,7 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+<<<<<<< HEAD
 =======
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/EditProfile.java">
@@ -395,16 +480,22 @@
             <state relative-caret-position="108">
               <caret line="169" column="14" lean-forward="true" selection-start-line="169" selection-start-column="14" selection-end-line="169" selection-end-column="14" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Dates.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+<<<<<<< HEAD
 =======
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_option.xml">
           <provider editor-type-id="android-designer2" />
@@ -412,6 +503,8 @@
             <state relative-caret-position="311">
               <caret line="614" column="38" selection-start-line="614" selection-start-column="38" selection-end-line="614" selection-end-column="38" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
             </state>
           </provider>
         </entry>
@@ -457,6 +550,7 @@
       <find>user</find>
       <find>back</find>
       <find>substring</find>
+<<<<<<< HEAD
 =======
   <component name="FindInProjectRecents">
     <findStrings>
@@ -490,6 +584,8 @@
       <find>handle_back</find>
       <find>viewmatch</find>
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
       <find>try</find>
     </findStrings>
     <dirStrings>
@@ -542,6 +638,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Dates.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Profile.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/EditProfile.java" />
+<<<<<<< HEAD
 =======
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ProfileOption.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_match.xml" />
@@ -553,11 +650,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Options.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Matches.java" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
     <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -692,6 +794,7 @@
             <path>
               <item name="DateBetterLogin" type="b2602c69:ProjectViewProjectNode" />
               <item name="DateBetterLogin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+<<<<<<< HEAD
 =======
               <item name="GoogleSignIn" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
@@ -760,6 +863,8 @@
               <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
             </path>
           </expand>
           <select />
@@ -770,6 +875,9 @@
   </component>
   <component name="PropertiesComponent">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
     <property name="SearchEverywhereHistoryKey" value="sdkmanager&#9;ACTION&#9;WelcomeScreen.RunAndroidSdkManager" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
@@ -922,6 +1030,7 @@
   <component name="ToolWindowManager">
 <<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.22541603" />
@@ -932,15 +1041,23 @@
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.2852459" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" weight="0.5032787" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info active="true" anchor="bottom" id="Terminal" order="4" sideWeight="0.49848714" visible="true" weight="0.6737705" />
+=======
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" visible="true" weight="0.22459017" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.3295082" />
+      <window_info anchor="bottom" id="Debug" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49848714" weight="0.14808652" />
+>>>>>>> dates
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50075644" side_tool="true" weight="0.2147541" />
       <window_info anchor="bottom" id="Version Control" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4977307" weight="0.6180328" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.07377049" />
       <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3294509" />
+<<<<<<< HEAD
 =======
     <frame x="-7" y="-7" width="1728" height="1117" extended-state="6" />
     <editor active="true" />
@@ -964,6 +1081,8 @@
       <window_info anchor="bottom" id="Build" order="8" weight="0.32690355" />
       <window_info anchor="bottom" id="Find" order="9" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+>>>>>>> dates
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32980332" />
@@ -1041,6 +1160,9 @@
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_option.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -1062,6 +1184,7 @@
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ProfileMatch.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="58" column="60" selection-start-line="58" selection-start-column="60" selection-end-line="58" selection-end-column="60" />
@@ -1099,11 +1222,40 @@
         <state relative-caret-position="397">
           <caret line="43" selection-start-line="43" selection-end-line="43" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="58" column="60" selection-start-line="58" selection-start-column="60" selection-end-line="58" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_options.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="93" selection-end-line="95" selection-end-column="15" />
+>>>>>>> dates
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_dates.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/profilematch.xml">
       <provider editor-type-id="text-editor">
@@ -1122,6 +1274,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dates
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
@@ -1215,8 +1370,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+<<<<<<< HEAD
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_date.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_match.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="19" selection-end-line="643" />
+=======
+>>>>>>> dates
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_date.xml">
       <provider editor-type-id="text-editor" />
@@ -1242,21 +1412,38 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_profile.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="87" column="53" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="53" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_cal_test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+>>>>>>> dates
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/os/Looper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="192" selection-start-line="192" selection-end-line="192" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+>>>>>>> dates
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/os/Handler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1349,6 +1536,18 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="321">
           <caret line="60" selection-end-line="66" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Home.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/profileoption.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="60" selection-end-line="66" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
@@ -1364,9 +1563,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+>>>>>>> dates
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ProfileOption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewOption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+=======
+>>>>>>> dates
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Options.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -1375,6 +1592,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Matches.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
           <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
@@ -1383,6 +1601,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewMatch.java">
       <provider selected="true" editor-type-id="text-editor">
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewMatch.java">
+      <provider selected="true" editor-type-id="text-editor">
+>>>>>>> dates
         <state relative-caret-position="395">
           <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
         </state>
@@ -1394,6 +1622,7 @@
           <caret line="122" selection-start-line="122" selection-end-line="122" />
           <folding>
             <element signature="imports" expanded="true" />
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Profile.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1403,10 +1632,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1087#1218#0" expanded="true" />
             <element signature="e#1217#1218#0" expanded="true" />
+=======
+>>>>>>> dates
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Options.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
@@ -1440,6 +1672,33 @@
             <element signature="method#onCancelled#0;class#5558:6359" />
 >>>>>>> bd5a6e1e4d44e7f5faf465eab3ddae1232c2c766
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/ViewDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="214" selection-start-line="214" selection-end-line="214" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Dates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/Profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/googlesignin/EditProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="102" column="59" selection-start-line="102" selection-start-column="59" selection-end-line="102" selection-end-column="59" />
+>>>>>>> dates
         </state>
       </provider>
     </entry>

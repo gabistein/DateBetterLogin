@@ -1,5 +1,6 @@
 package com.example.googlesignin;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.security.GeneralSecurityException;
 
 public class Home extends AppCompatActivity {
     Button button;
@@ -33,6 +36,8 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        System.out.println("TESTing if new");
+
         button = (Button) findViewById(R.id.btn_logout);
         mAuth=FirebaseAuth.getInstance();
         email = mAuth.getCurrentUser().getEmail();
@@ -105,5 +110,6 @@ public class Home extends AppCompatActivity {
     protected void handle_dates(View v){
         startActivity(new Intent(Home.this, Dates.class));
     }
+
 
 }

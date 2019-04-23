@@ -11,13 +11,19 @@ import android.widget.LinearLayout;
 
 public class Dates extends AppCompatActivity {
 
+    private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dates);
 
+        email=getIntent().getStringExtra("email");
+
         LinearLayout matches_container= (LinearLayout) findViewById(R.id.dates_container);
 
+        //TODO: for each date, get date id, invitee name, inviter name, status
+        //TODO: add each date to matches_container
         matches_container.addView(this.create_date("Sarah", "gabi", "pending", 1));
 
 
@@ -26,14 +32,22 @@ public class Dates extends AppCompatActivity {
     }
 
     protected void handle_back_btn(View v){
-        startActivity(new Intent(Dates.this, Home.class));
+        Intent to_home=new Intent(Dates.this, Home.class);
+        to_home.putExtra("email",email);
+
+        startActivity(to_home);
     }
 
     /**name: handle_home
      * action: takes to home page
      * */
     protected void handle_home(View v){
-        startActivity(new Intent(Dates.this, Home.class));
+
+        Intent to_home=new Intent(Dates.this, Home.class);
+        to_home.putExtra("email",email);
+
+        startActivity(to_home);
+
     }
 
 
@@ -46,10 +60,10 @@ public class Dates extends AppCompatActivity {
     /**name: create_date
      * action: creates DateTile object
      * */
-    protected DateTile create_date(String inviter_id, String invitee_id, String status, int date_id){
+    protected DateTile create_date(String inviter_name, String invitee_name, String status, int date_id){
         DateTile date_tile= new DateTile(this);
         //TODO: ideally set name instead of id but need
-        date_tile.set_all(invitee_id,inviter_id, status);
+        date_tile.set_all(invitee_name,inviter_name, status);
         final int f_date_id=date_id;
 
         date_tile.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +83,7 @@ public class Dates extends AppCompatActivity {
 
         Intent view_date= new Intent(Dates.this, ViewDate.class );
         view_date.putExtra("date_id", +date_id);
+        view_date.putExtra("email",email);
         startActivity(view_date);
     }
 

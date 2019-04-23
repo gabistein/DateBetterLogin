@@ -107,6 +107,7 @@ public class Options extends AppCompatActivity {
         final String check_id = id;
         System.out.println("Here to set options");
 
+
         reff = FirebaseDatabase.getInstance().getReference().child("Likes");
         reff.child(email).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -139,12 +140,12 @@ public class Options extends AppCompatActivity {
     }
 
     public void setUnlike(String id, String name, String age){
-        options_container.addView(this.create_option(id,name, Integer.parseInt(age), 100, "Unlike"));
+        options_container.addView(this.create_option(id,name, Integer.parseInt(age),  "Unlike"));
 
     }
     public void setLike(String id, String name, String age){
         // System.out.println("trying to print like: " + like[0]);
-        options_container.addView(this.create_option(id,name, Integer.parseInt(age), 100, "Like"));
+        options_container.addView(this.create_option(id,name, Integer.parseInt(age), "Like"));
 
     }
 
@@ -222,14 +223,19 @@ public class Options extends AppCompatActivity {
      * action: takes to home page
      * */
     protected void handle_home(View v){
-        startActivity(new Intent(Options.this, Home.class));
+        Intent to_home=new Intent(Options.this, Home.class);
+        to_home.putExtra("email", email);
+        startActivity(to_home);
+
     }
 
     /**name: handle_home
      * action: takes to previous page
      * */
     protected void handle_back_btn(View v){
-        startActivity(new Intent(Options.this, Home.class));
+        Intent to_home=new Intent(Options.this, Home.class);
+        to_home.putExtra("email", email);
+        startActivity(to_home);
     }
 
 
@@ -238,30 +244,16 @@ public class Options extends AppCompatActivity {
     ///////////////////////////
     //////Helpers
     ///////////////////////////
-    /**name: handle_home
-     * action: clears options
-     * */
-    protected void clear_options(){
-        LinearLayout options_container= (LinearLayout) findViewById(R.id.options_container);
-        //TODO: clear all options
-
-    }
 
 
     /**name: create_option
      * action: creates a profile option object
      * */
-    protected void set_layout_params(View v){
-        ViewGroup.MarginLayoutParams margins= new ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.WRAP_CONTENT,ViewGroup.MarginLayoutParams.WRAP_CONTENT);
-        margins.setMargins(10,10,10,10);
-        v.setLayoutParams(margins);
-        v.setPadding(5,5,5,5);
-    }
 
 
-    protected ProfileOption create_option(String id, String name, int age, double score, String like){
+    protected ProfileOption create_option(String id, String name, int age, String like){
         final ProfileOption option= new ProfileOption(this);
-        option.set_all(name, age, score, like);
+        option.set_all(name, age,like );
         final String btn_id=id;
         option.get_like_button().setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
