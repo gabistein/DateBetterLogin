@@ -74,7 +74,7 @@ public class DateInput extends AppCompatActivity {
 
         //Map
         map_text= (EditText)findViewById(R.id.text_set_time);
-
+        message_text = (EditText) findViewById(R.id.bio_val);
 
 
     }
