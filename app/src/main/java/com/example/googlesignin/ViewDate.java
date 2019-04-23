@@ -14,16 +14,16 @@ import android.widget.Button;
 public class ViewDate extends AppCompatActivity {
 
     private String email;
-    private int date_id;
-    private String inviter_id;
-    private String inviter_name;
-    private String invitee_id;
-    private String invitee_name;
-    private String date;
-    private String time;
-    private String location;
-    private String message;
-    private String status;
+    private int date_id; // something to identify date
+    private String inviter_id; // inviter google id
+    private String inviter_name; // inviter name
+    private String invitee_id; // invitee google id
+    private String invitee_name; //invittee name
+    private String date; // day of year
+    private String time; // time of year
+    private String location; // location
+    private String message; // message
+    private String status; // pending-> accept
 
 
     @Override
