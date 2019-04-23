@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class DateInput extends AppCompatActivity {
     protected EditText time_text, date_text, map_text;
-    protected Button time_btn, date_btn, map_btn;
+    protected Button time_btn, date_btn;
     String email,from;
 
     @Override
@@ -52,8 +52,6 @@ public class DateInput extends AppCompatActivity {
 
         //Map
         map_text= (EditText)findViewById(R.id.text_set_time);
-        map_btn= (Button) findViewById(R.id.btn_set_address);
-
 
 
     }
