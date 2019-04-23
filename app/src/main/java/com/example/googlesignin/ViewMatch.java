@@ -10,12 +10,13 @@ import android.widget.Button;
 public class ViewMatch extends AppCompatActivity {
 
     String other_id;
-    String cur_id;
+    String email;
     String from;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_match);
+        email=getIntent().getStringExtra("email");
 
         //testing if info is being passed
         other_id= getIntent().getStringExtra("other_id");
@@ -27,8 +28,11 @@ public class ViewMatch extends AppCompatActivity {
         //TODO: deletes match or deletes likes
         Log.v("btn","unmatch");
 
-        //takes back to matches page
-        startActivity(new Intent(ViewMatch.this, Matches.class));
+        //TODO: add pop up to confirm un match
+        Intent to_matches= new Intent(ViewMatch.this, Matches.class);
+        to_matches.putExtra("email",email);
+
+        startActivity(to_matches);
 
     }
 
@@ -36,29 +40,35 @@ public class ViewMatch extends AppCompatActivity {
         Log.v("btn", "send date invite");
 
         //create new intent for date and set extras to reflect current user and date invitee
-        Intent intent= new Intent(ViewMatch.this, DateInput.class);
-        intent.putExtra("from", "ViewMatch");
-        intent.putExtra("other_id", other_id );
-        startActivity(intent);
+        Intent to_date_input= new Intent(ViewMatch.this, DateInput.class);
+        to_date_input.putExtra("from", "ViewMatch");
+        to_date_input.putExtra("other_id", other_id );
+        to_date_input.putExtra("email", email);
+        startActivity(to_date_input);
 
     }
 
 
     protected void handle_back_btn(View v){
         if(from.equals("Matches")){
+            Intent to_matches=new Intent(ViewMatch.this, Matches.class);
+            to_matches.putExtra("email", email);
             startActivity(new Intent(ViewMatch.this, Matches.class));
         }else if(from.equals("ViewDate")){
             //TODO: pass in View Date ID
             int date_id=getIntent().getIntExtra("date_id", 0);
-            Intent viewdate=new Intent(ViewMatch.this,ViewDate.class);
-            viewdate.putExtra("date_id", date_id);
-            startActivity(viewdate);
+            Intent to_view_date=new Intent(ViewMatch.this,ViewDate.class);
+            to_view_date.putExtra("date_id", date_id);
+            to_view_date.putExtra("email",email);
+            startActivity(to_view_date);
         }
 
     }
 
     protected void handle_home(View v){
-        startActivity(new Intent(ViewMatch.this, Home.class));
+        Intent to_home=new Intent(ViewMatch.this, Home.class);
+        to_home.putExtra("email",email);
+        startActivity(to_home);
     }
 
 }

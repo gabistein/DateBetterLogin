@@ -111,9 +111,5 @@ public class Home extends AppCompatActivity {
         startActivity(new Intent(Home.this, Dates.class));
     }
 
-    protected void handle_test(View v){
-        startActivity(new Intent(Home.this, Cal_test.class));
-
-    }
 
 }

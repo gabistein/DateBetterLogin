@@ -13,7 +13,7 @@ import android.widget.Button;
 
 public class ViewDate extends AppCompatActivity {
 
-    private String cur_id;
+    private String email;
     private int date_id;
     private String inviter_id;
     private String inviter_name;
@@ -25,14 +25,16 @@ public class ViewDate extends AppCompatActivity {
     private String message;
     private String status;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_date);
 
+        email=getIntent().getStringExtra("email");
+
         date_id=getIntent().getIntExtra("date_id",0);
         //TODO: change to pull cur_id however Gabi did it for other pages
-        cur_id="sarahganci@gmail.com";
 
         //TODO: query table and get info to set all fields
         date_id=1;
@@ -97,15 +99,18 @@ public class ViewDate extends AppCompatActivity {
 
     protected void handle_reject(View v){
         //TODO: database entry for rejected date
+        //TODO: dialog pop up for reject?
         //delete date invite
         //return to dates screen
         Intent dates= new Intent(ViewDate.this, Dates.class);
+        dates.putExtra("email", email);
         startActivity(dates);
 
     }
 
     protected void handle_cancel_date(View v){
 
+        //TODO: database cancel date and fix popup
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle("Date Cancellation");
@@ -131,11 +136,12 @@ public class ViewDate extends AppCompatActivity {
         //go to view match but pass in extra to identify where we came from
         Intent viewmatch= new Intent(ViewDate.this, ViewMatch.class);
         //TODO: also need to put matches id by querying date id and getting the other id
-        String other_id= this.cur_id.equals(inviter_id)? invitee_id: inviter_id;
+        String other_id= this.email.equals(inviter_id)? invitee_id: inviter_id;
 
         viewmatch.putExtra("other_id", other_id);
         viewmatch.putExtra("from", "ViewDate");
         viewmatch.putExtra("date_id",date_id);
+        viewmatch.putExtra("email", email);
         startActivity(viewmatch);
 
 

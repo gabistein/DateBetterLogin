@@ -99,6 +99,9 @@ public class EditProfile extends AppCompatActivity {
 
     protected void populate(){
         reff = FirebaseDatabase.getInstance().getReference().child("Profile");
+        if(email.contains("@")){
+            email = email.substring(0, email.indexOf("@"));
+        }
         reff.child(email).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -223,13 +226,17 @@ public class EditProfile extends AppCompatActivity {
      * action: takes to previous page
      * */
     protected void handle_back_btn(View v){
-        startActivity(new Intent(EditProfile.this, Profile.class));
+        Intent to_profile= new Intent(EditProfile.this, Profile.class);
+        to_profile.putExtra("email", signInId);
+        startActivity(to_profile);
     }
 
     /**name: handle_home
      * action: takes to home page
      * */
     protected void handle_home(View v){
-        startActivity(new Intent(EditProfile.this, Home.class));
+        Intent to_home=new Intent(EditProfile.this, Home.class);
+        to_home.putExtra("email", signInId);
+        startActivity(to_home);
     }
 }

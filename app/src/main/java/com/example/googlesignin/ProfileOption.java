@@ -13,7 +13,7 @@ public class ProfileOption extends LinearLayout {
 
     protected TextView profile_name;
     protected TextView profile_age;
-    protected TextView profile_score;
+   // protected TextView profile_score;
     protected Button like_button;
 
     public ProfileOption(Context context, AttributeSet attrs) {
@@ -37,7 +37,7 @@ public class ProfileOption extends LinearLayout {
     public void init(){
         profile_age=findViewById(R.id.po_age);
         profile_name=findViewById(R.id.po_name);
-        profile_score=findViewById(R.id.po_match);
+       // profile_score=findViewById(R.id.po_match);
         like_button=findViewById(R.id.po_like);
     }
 
@@ -47,18 +47,18 @@ public class ProfileOption extends LinearLayout {
     public void set_name(String name){
         profile_name.setText(name);
     }
-    public void set_score(double score){
-        profile_score.setText(score+"% match");
-    }
+//    public void set_score(double score){
+//        profile_score.setText(score+"% match");
+//    }
 
     public Button get_like_button(){
         return like_button;
     }
 
-    public void set_all( String name,int age, double score){
+    public void set_all( String name,int age){
         this.set_name(name);
         this.set_age(age);
-        this.set_score(score);
+      //  this.set_score(score);
     }
 
 

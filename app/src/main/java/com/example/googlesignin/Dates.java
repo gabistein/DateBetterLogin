@@ -11,10 +11,14 @@ import android.widget.LinearLayout;
 
 public class Dates extends AppCompatActivity {
 
+    private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dates);
+
+        email=getIntent().getStringExtra("email");
 
         LinearLayout matches_container= (LinearLayout) findViewById(R.id.dates_container);
 
@@ -28,14 +32,22 @@ public class Dates extends AppCompatActivity {
     }
 
     protected void handle_back_btn(View v){
-        startActivity(new Intent(Dates.this, Home.class));
+        Intent to_home=new Intent(Dates.this, Home.class);
+        to_home.putExtra("email",email);
+
+        startActivity(to_home);
     }
 
     /**name: handle_home
      * action: takes to home page
      * */
     protected void handle_home(View v){
-        startActivity(new Intent(Dates.this, Home.class));
+
+        Intent to_home=new Intent(Dates.this, Home.class);
+        to_home.putExtra("email",email);
+
+        startActivity(to_home);
+
     }
 
 
@@ -71,6 +83,7 @@ public class Dates extends AppCompatActivity {
 
         Intent view_date= new Intent(Dates.this, ViewDate.class );
         view_date.putExtra("date_id", +date_id);
+        view_date.putExtra("email",email);
         startActivity(view_date);
     }
 

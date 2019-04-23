@@ -10,10 +10,12 @@ import android.widget.LinearLayout;
 
 public class Matches extends AppCompatActivity {
     String user;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matches);
+        email= getIntent().getStringExtra("email");
 
         LinearLayout matches_container= (LinearLayout) findViewById(R.id.matches_container);
 
@@ -29,36 +31,41 @@ public class Matches extends AppCompatActivity {
      * action: takes to previous page
      * */
     protected void handle_back_btn(View v){
-        startActivity(new Intent(Matches.this, Home.class));
+
+        Intent to_home=new Intent(Matches.this, Home.class);
+        to_home.putExtra("email", email);
+        startActivity(to_home);
     }
     /**name: handle_home
      * action: takes to home page
      * */
     protected void handle_home(View v){
-        user = getIntent().getExtras().getString("email");
-        startActivity(new Intent(Matches.this, Home.class));
+        Intent to_home=new Intent(Matches.this, Home.class);
+        to_home.putExtra("email", email);
+        startActivity(to_home);
     }
 
     /**name: handle_view_profile
      * action: takes to view match page
      * */
     protected void handle_view_profile(String id){
-        Intent view_profile= new Intent(Matches.this, ViewMatch.class );
-        view_profile.putExtra("other_id", ""+id);
-        view_profile.putExtra("from", "Matches");
-        startActivity(view_profile);
+        Intent to_view_match= new Intent(Matches.this, ViewMatch.class );
+        to_view_match.putExtra("other_id", ""+id);
+        to_view_match.putExtra("from", "Matches");
+        to_view_match.putExtra("email", email);
+        startActivity(to_view_match);
     }
 
     /**name: handle_date
      * action: takes to view match page
      * */
     protected void handle_date(String id){
-        //TODO: open new intent to create a date
         Log.v("MYTAG", "date id: "+id);
-        Intent intent= new Intent(Matches.this, DateInput.class);
-        intent.putExtra("from", "Matches");
-        intent.putExtra("other_id", ""+id);
-        startActivity(intent);
+        Intent to_date_input= new Intent(Matches.this, DateInput.class);
+        to_date_input.putExtra("from", "Matches");
+        to_date_input.putExtra("other_id", ""+id);
+        to_date_input.putExtra("email",email);
+        startActivity(to_date_input);
     }
 
     /////////

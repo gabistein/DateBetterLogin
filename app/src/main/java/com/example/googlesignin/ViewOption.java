@@ -11,6 +11,7 @@ public class ViewOption extends AppCompatActivity {
 
     boolean has_liked;
     String other_id;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class ViewOption extends AppCompatActivity {
 
         //testing if info is being passed
         other_id= getIntent().getStringExtra("other_id");
+        email= getIntent().getStringExtra("email");
         Log.v("MYTAG", other_id);
     }
 
@@ -57,10 +59,14 @@ public class ViewOption extends AppCompatActivity {
 
 
     protected void handle_back_btn(View v){
-        startActivity(new Intent(ViewOption.this, Options.class));
+        Intent to_options=new Intent(ViewOption.this, Options.class);
+        to_options.putExtra("email", email);
+        startActivity(to_options);
     }
 
     protected void handle_home(View v){
-        startActivity(new Intent(ViewOption.this, Home.class));
+        Intent to_home=new Intent(ViewOption.this, Home.class);
+        to_home.putExtra("email", email);
+        startActivity(to_home);
     }
 }

@@ -20,6 +20,8 @@ import java.util.TimerTask;
 
 public class Profile extends AppCompatActivity {
     String email;
+    //email_id for purposes persisting state in other classes
+    String email_id;
     DatabaseReference reff;
     String values;
     String[] value_array;
@@ -28,6 +30,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         email = getIntent().getExtras().getString("email");
+        email_id= getIntent().getExtras().getString("email");
         if(email.contains("@")){
             email = email.substring(0,email.indexOf('@'));
         }
@@ -105,17 +108,21 @@ public class Profile extends AppCompatActivity {
 
     protected void handle_edit_profile(View v){
         Intent to_edit = new Intent(Profile.this, EditProfile.class);
-        to_edit.putExtra("email", email);
+        to_edit.putExtra("email", email_id);
         startActivity(to_edit);
 
     }
 
     protected void handle_home(View v){
-        startActivity(new Intent(Profile.this, Home.class));
+        Intent to_home=new Intent(Profile.this, Home.class);
+        to_home.putExtra("email", email_id);
+        startActivity(to_home);
     }
 
     protected void handle_back_btn(View v){
-        startActivity(new Intent(Profile.this, Home.class));
+        Intent to_home= new Intent(Profile.this, Home.class);
+        to_home.putExtra("email", email_id);
+        startActivity(to_home);
     }
 
 

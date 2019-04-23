@@ -17,12 +17,15 @@ import java.util.Date;
 public class DateInput extends AppCompatActivity {
     protected EditText time_text, date_text, map_text;
     protected Button time_btn, date_btn, map_btn;
+    String email,from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_input);
 
+        email=getIntent().getStringExtra("email");
+        from=getIntent().getStringExtra("from");
 
         //Time
         time_text= (EditText)findViewById(R.id.text_set_time);
@@ -135,19 +138,24 @@ public class DateInput extends AppCompatActivity {
         if(from==null){
             //TODO: go HOME
         }else if(from.equals("Matches")){
-            startActivity(new Intent(DateInput.this, Matches.class));
+            Intent to_matches=new Intent(DateInput.this, Matches.class);
+            to_matches.putExtra("email", email);
+            startActivity(to_matches);
         }else if(from.equals("ViewMatch")){
             //TODO: pass in View Date ID
             int date_id=getIntent().getIntExtra("date_id", 0);
             Intent viewdate=new Intent(DateInput.this,ViewMatch.class);
             viewdate.putExtra("date_id", date_id);
+            viewdate.putExtra("email", email);
             startActivity(viewdate);
         }
 
     }
 
     protected void handle_home(View v){
-        startActivity(new Intent(ViewMatch.this, Home.class));
+        Intent to_home= new Intent(DateInput.this, Home.class);
+        to_home.putExtra("email", email);
+        startActivity(to_home);
     }
 
 
