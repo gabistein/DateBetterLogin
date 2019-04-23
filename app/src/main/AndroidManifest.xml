@@ -18,7 +18,6 @@
         <activity android:name=".ViewMatch" />
         <activity android:name=".Matches" />
         <activity android:name=".Options" />
-        <activity android:name=".ViewOption" />
         <activity android:name=".Home" />
         <activity
             android:name=".EditProfile"

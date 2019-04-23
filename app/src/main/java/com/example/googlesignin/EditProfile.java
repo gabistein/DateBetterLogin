@@ -29,6 +29,7 @@ public class EditProfile extends AppCompatActivity {
     String key;
     String[] value_array;
     String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,29 +53,95 @@ public class EditProfile extends AppCompatActivity {
     }
 
     protected void handle_save(View v) {
-          currentProfile.setId(signInId);
-          TextView nameText = (TextView)findViewById(R.id.profile_name);
-          System.out.println("nameText is : "  + nameText.getText().toString());
-          currentProfile.setName(nameText.getText().toString());
-          TextView bioText = (TextView)findViewById(R.id.bio_val);
-          currentProfile.setBio(bioText.getText().toString());
-          TextView ageText = (TextView)findViewById(R.id.birthday);
-//           currentProfile.setAge(Integer.parseInt(ageText.toString()));
-          currentProfile.setStar_sign(getSpinnerText(R.id.ss_val));
-          currentProfile.setMb_type(getSpinnerText(R.id.mb_val));
-          currentProfile.setPet(getSpinnerText(R.id.pet_val));
-          currentProfile.setSmoking(getSpinnerText(R.id.smoke_val));
-          currentProfile.setDrinking(getSpinnerText(R.id.drink_val));
-          currentProfile.setPolitics(getSpinnerText(R.id.politics_val));
-          key = signInId;
+          // Set id for db
+          if(signInId.contains("@")){
+              currentProfile.setId(signInId.substring(0,signInId.indexOf("@")));
+          }else{
+              currentProfile.setId(signInId);
+          }
 
+          // issse with on save not grabbing value for name, age, and bio -- some sort of autocomplete?
+
+          // Set name
+          String currentName;
+          TextView nameText = (TextView)findViewById(R.id.profile_name);
+          if(nameText.getText().toString().equals("")){
+              EditText hintText = (EditText)findViewById(R.id.profile_name);
+              currentName = hintText.getHint().toString();
+          }else{
+              currentName = nameText.getText().toString();
+          }
+          // System.out.println("nameText is : "  + nameText.getText().toString());
+          currentProfile.setName(currentName);
+
+          // Set age
+          String currentAge;
+          TextView ageText = (TextView) findViewById(R.id.birthday);
+          if(ageText.getText().toString().equals("")){
+              EditText hintText = (EditText) findViewById(R.id.birthday);
+              currentAge = hintText.getHint().toString();
+          } else{
+              currentAge = ageText.getText().toString();
+          }
+          currentProfile.setAge(currentAge);
+
+          // Set bio
+          String currentBio;
+          TextView bioText = (TextView)findViewById(R.id.bio_val);
+         if(bioText.getText().toString().equals("")){
+             EditText hintText = (EditText) findViewById(R.id.bio_val);
+             currentBio = hintText.getHint().toString();
+         }else{
+             currentBio = bioText.getText().toString();
+         }
+          currentProfile.setBio(currentBio);
+
+          // Set identifies as
+          currentProfile.setGender(getSpinnerText(R.id.g_val));
+
+          // Set interested in
+          currentProfile.setPreference(getSpinnerText(R.id.o_val));
+
+          // Set star sign
+          currentProfile.setStar_sign(getSpinnerText(R.id.ss_val));
+
+          // Set MB
+          currentProfile.setMb_type(getSpinnerText(R.id.mb_val));
+
+          // Set pet
+          currentProfile.setPet(getSpinnerText(R.id.pet_val));
+
+          //Set drinking
+          currentProfile.setDrinking(getSpinnerText(R.id.drink_val));
+
+          //Set smoking
+          currentProfile.setSmoking(getSpinnerText(R.id.smoke_val));
+
+          //Set politics
+          currentProfile.setPolitics(getSpinnerText(R.id.politics_val));
+
+          //Set earth
+          currentProfile.setEarth_flat(getSpinnerText(R.id.earth_val));
+
+          // Set farmer
+          currentProfile.setFarmer(getSpinnerText(R.id.farm_val));
+
+          // Set night in/out
+          currentProfile.setNight_in(getSpinnerText(R.id.night_val));
+          if(signInId.contains("@")){
+              key = signInId.substring(0,signInId.indexOf("@"));
+          }else{
+              key = signInId;
+          }
+
+          // System.out.println("KEY: " + key);
 
           reff = FirebaseDatabase.getInstance().getReference().child("Profile");
           reff.orderByChild("id").equalTo(signInId).addListenerForSingleValueEvent(new ValueEventListener() {
 
               @Override
               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    updateUserProfile(reff.child(key),0, currentProfile.getBio(), currentProfile.getDrinking(),currentProfile.getFarmer(),currentProfile.getId(), currentProfile.getMb_type(),currentProfile.getName(), currentProfile.getNight_in(),currentProfile.getPet(), currentProfile.getPolitics(),currentProfile.getSmoking(),currentProfile.getStar_sign() );
+                    updateUserProfile(reff.child(key),currentProfile.getGender(), currentProfile.getPreference(), currentProfile.getAge(), currentProfile.getBio(), currentProfile.getDrinking(),currentProfile.getFarmer(),currentProfile.getId(), currentProfile.getMb_type(),currentProfile.getName(), currentProfile.getNight_in(),currentProfile.getPet(), currentProfile.getPolitics(),currentProfile.getSmoking(),currentProfile.getStar_sign(), currentProfile.getEarth_flat() );
               }
 
               @Override
@@ -99,6 +166,9 @@ public class EditProfile extends AppCompatActivity {
 
     protected void populate(){
         reff = FirebaseDatabase.getInstance().getReference().child("Profile");
+        if(email.contains("@")){
+            email = email.substring(0,email.indexOf("@"));
+        }
         reff.child(email).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -108,33 +178,45 @@ public class EditProfile extends AppCompatActivity {
                     value_array = values.split(",");
 
                     // Set name
-                    setHint(5, R.id.profile_name);
+                    setHint(10, R.id.profile_name);
 
-
+                    // Set age
+                    setHint(13,R.id.birthday);
                     // Set Bio
-                    setHint(6, R.id.bio_val);
-
-                    // how to set spinner value
-                    setSpinner(1, R.array.star_options, R.id.ss_val);
+                    setHint(4, R.id.bio_val);
+                    // set identifies as
+                    setSpinner(3, R.array.identify_as, R.id.g_val);
+                    // set orientation
+                    setSpinner(0, R.array.interested_in, R.id.o_val);
+                    // set starsign
+                    setSpinner(7, R.array.star_options, R.id.ss_val);
 
                     // set mb
-                    setSpinner(3, R.array.mb_options, R.id.mb_val);
+                    setSpinner(8, R.array.mb_options, R.id.mb_val);
 
+                    // Set pet
+
+                    String[] pet_options = getResources().getStringArray(R.array.pet_options);
+                    Spinner spinner = (Spinner) findViewById(R.id.pet_val);
+                    spinner.setSelection(findIndex(pet_options, value_array[value_array.length - 1].substring((value_array[value_array.length-1]).indexOf("=") + 1, (value_array[value_array.length -1]).indexOf(("}")))));
+
+
+//                // set smoking
+                    setSpinner(9, R.array.smoke_options, R.id.smoke_val);
 
                     //set drinking
                     setSpinner(2, R.array.drink_options, R.id.drink_val);
 
-//                // set smoking
-                    setSpinner(4, R.array.smoke_options, R.id.smoke_val);
 //
 //                // set politicis
-                    setSpinner(0, R.array.politics_options, R.id.politics_val);
+                    setSpinner(1, R.array.politics_options, R.id.politics_val);
 //
-////                // Set pet
-
-                    String[] pet_options = getResources().getStringArray(R.array.pet_options);
-                    Spinner spinner = (Spinner) findViewById(R.id.pet_val);
-                    spinner.setSelection(findIndex(pet_options, value_array[11].substring((value_array[11]).indexOf("=") + 1, (value_array[11]).indexOf(("}")))));
+                // set earth
+                    setSpinner(6, R.array.earth_options, R.id.earth_val);
+                    //setfamer
+                    setSpinner(11, R.array.farm_options, R.id.farm_val);
+                    //set night in or out
+                    setSpinner(5, R.array.night_options, R.id.night_val);
                 }catch(Exception e){
                     System.out.println("hit a null in edit");
                 }
@@ -159,23 +241,32 @@ public class EditProfile extends AppCompatActivity {
         return text;
     }
 
-    public void updateUserProfile(DatabaseReference db, int age, String bio, String drinking, String farmer, String id, String mb_tpe, String name, String night_in, String pet, String politics, String smoking, String star_sign){
-        db.child("bio").setValue(bio);
-        db.child("drinking").setValue(drinking);
-        db.child("farmer").setValue(farmer);
-        db.child("id").setValue(id);
-        db.child("mb_type").setValue(mb_tpe);
-        db.child("name").setValue(name);
-        db.child("night_in").setValue(night_in);
-        db.child("pet").setValue(pet);
-        db.child("politics").setValue(politics);
-        db.child("smoking").setValue(smoking);
-        db.child("star_sign").setValue(star_sign);
-        db.child("age").setValue(age);
+    public void updateUserProfile(DatabaseReference db, String gender, String orientation, String age, String bio, String drinking, String farmer, String id, String mb_tpe, String name, String night_in, String pet, String politics, String smoking, String star_sign, String earth){
+        db.child("id").setValue(id); //id
+        db.child("name").setValue(name); // name
+        db.child("age").setValue(age); // age
+        db.child("bio").setValue(bio); // bio
+        db.child("gender").setValue(gender); // identifies as
+        db.child("interested_in").setValue(orientation); // interested in
+        db.child("star_sign").setValue(star_sign); // star sign
+        db.child("mb_type").setValue(mb_tpe); // meyers briggs
+        db.child("pet").setValue(pet); // pet
+        db.child("drinking").setValue(drinking); // drinking
+        db.child("smoking").setValue(smoking); // smoking
+        db.child("politics").setValue(politics); // politics
+        db.child("earth_is").setValue(earth); // earth
+        db.child("farmer").setValue(farmer); // farmer
+        db.child("night_in").setValue(night_in); // night in/out
+
+
+
+
+
     }
 
     public void setHint(int i, int text_view_id){
         String name = value_array[i].substring(value_array[i].indexOf("=") + 1);
+        System.out.println("Set Hint: " + name);
         EditText nameText = (EditText) findViewById(text_view_id);
         nameText.setHint(name);
 

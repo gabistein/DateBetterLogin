@@ -55,10 +55,17 @@ public class ProfileOption extends LinearLayout {
         return like_button;
     }
 
-    public void set_all( String name,int age, double score){
+    public void set_all( String name,int age, double score, String like){
         this.set_name(name);
         this.set_age(age);
         this.set_score(score);
+        this.set_like(like);
+    }
+
+    public void set_like(String like){
+        this.like_button.setText(like);
+
+
     }
 
 

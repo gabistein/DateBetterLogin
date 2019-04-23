@@ -27,6 +27,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         email = getIntent().getExtras().getString("email");
         if(email.contains("@")){
             email = email.substring(0,email.indexOf('@'));
@@ -52,24 +53,33 @@ public class Profile extends AppCompatActivity {
                    System.out.println(values);
                    value_array = values.split(",");
 
-                   // Set name -- not updating after edit profile?
-                   setValue(5, R.id.profile_name);
-
+                   // Set name
+                   setValue(10, R.id.profile_name);
+                   String name = value_array[10].substring(value_array[10].indexOf("=") + 1);
+                   System.out.println("name on edit" + name);
+                   String age = value_array[13].substring(value_array[13].indexOf("=")+1);
+                   TextView nameText = (TextView) findViewById(R.id.profile_name);
+                   nameText.setText(name + ", " + age);
 
                    // Set Bio
-                   setValue(6, R.id.bio_val);
+                   setValue(4, R.id.bio_val);
 
+                   // Set Identifies as
+                   setValue(3, R.id.g_val);
+
+                   // Set interested in
+                   setValue(0, R.id.o_val);
 
                    // Set star sign
-                   setValue(1, R.id.ss_val);
+                   setValue(7, R.id.ss_val);
 
 
                    // Set MB
-                   setValue(3, R.id.mb_val);
+                   setValue(8, R.id.mb_val);
 
 
                    // Set pet
-                   String pet = value_array[11].substring((value_array[11]).indexOf("=") + 1, (value_array[11]).indexOf(("}")));
+                   String pet = value_array[value_array.length-1].substring((value_array[value_array.length-1]).indexOf("=") + 1, (value_array[value_array.length-1]).indexOf(("}")));
                    TextView pet_text = (TextView) findViewById(R.id.pet_val);
                    pet_text.setText(pet);
 
@@ -77,10 +87,18 @@ public class Profile extends AppCompatActivity {
                    setValue(2, R.id.drink_val);
 
                    //set smoking
-                   setValue(4, R.id.smoke_val);
+                   setValue(9, R.id.smoke_val);
 
                    // set politics
-                   setValue(0, R.id.politics_val);
+                   setValue(1, R.id.politics_val);
+                   //set earth
+                   setValue(6,R.id.earth_val);
+
+                   //set farmer
+                   setValue(11, R.id.farmer_val);
+                   // set night in/out
+                   setValue(5, R.id.night_val);
+
                }catch(Exception e){
                    System.out.println("hit a null");
                }
