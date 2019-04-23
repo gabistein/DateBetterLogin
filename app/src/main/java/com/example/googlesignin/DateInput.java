@@ -107,8 +107,16 @@ public class DateInput extends AppCompatActivity {
 
                         String format= hourOfDay>12? "pm" : "am";
                         hourOfDay= hourOfDay>12? hourOfDay-12: hourOfDay;
+                        String s_hourOfDay=""+hourOfDay;
+//                        if(hourOfDay<10){
+//                            s_hourOfDay="0"+hourOfDay;
+//                        }
+                        String s_min= ""+minute;
+                        if (minute<10){
+                            s_min="0"+s_min;
+                        }
 
-                        time_text.setText(hourOfDay + ":" + minute+format);
+                        time_text.setText(s_hourOfDay + ":" + s_min+format);
                     }
                 }, hour, minute, false);
 
