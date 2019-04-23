@@ -15,7 +15,7 @@ public class ViewMatch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_option);
+        setContentView(R.layout.activity_view_match);
 
         //testing if info is being passed
         other_id= getIntent().getStringExtra("other_id");
@@ -37,7 +37,9 @@ public class ViewMatch extends AppCompatActivity {
 
         //create new intent for date and set extras to reflect current user and date invitee
         Intent intent= new Intent(ViewMatch.this, DateInput.class);
+        intent.putExtra("from", "ViewMatch");
         intent.putExtra("other_id", other_id );
+        startActivity(intent);
 
     }
 

@@ -56,6 +56,7 @@ public class Matches extends AppCompatActivity {
         //TODO: open new intent to create a date
         Log.v("MYTAG", "date id: "+id);
         Intent intent= new Intent(Matches.this, DateInput.class);
+        intent.putExtra("from", "Matches");
         intent.putExtra("other_id", ""+id);
         startActivity(intent);
     }
