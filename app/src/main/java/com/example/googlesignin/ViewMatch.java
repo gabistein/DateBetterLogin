@@ -23,7 +23,6 @@ public class ViewMatch extends AppCompatActivity {
     String values;
     String[] value_array;
     String email;
-    String from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,30 +36,7 @@ public class ViewMatch extends AppCompatActivity {
         populate_profile();
         Log.v("MYTAG", other_id);
     }
-    // right now this button doesn't exists?
-    protected void handle_unmatch(View v){
-        //TODO: deletes match or deletes likes
-        Log.v("btn","unmatch");
 
-        //TODO: add pop up to confirm un match
-        Intent to_matches= new Intent(ViewMatch.this, Matches.class);
-        to_matches.putExtra("email",email);
-
-        startActivity(to_matches);
-
-    }
-
-    protected void handle_invite(View v){
-        Log.v("btn", "send date invite");
-
-        //create new intent for date and set extras to reflect current user and date invitee
-        Intent to_date_input= new Intent(ViewMatch.this, DateInput.class);
-        to_date_input.putExtra("from", "ViewMatch");
-        to_date_input.putExtra("other_id", other_id );
-        to_date_input.putExtra("email", email);
-        startActivity(to_date_input);
-
-    }
 
 
     protected void handle_back_btn(View v){
@@ -69,11 +45,16 @@ public class ViewMatch extends AppCompatActivity {
             Intent back = new Intent(ViewMatch.this, Options.class);
             back.putExtra("email", email);
             startActivity(back);
-        }else {
+        }else if(getIntent().getStringExtra("came_from").equals("matches")) {
             Intent back = new Intent(ViewMatch.this, Matches.class);
             back.putExtra("email", email);
             startActivity(back);
 
+        }else if(getIntent().getStringExtra("came_from").equals("view_date")){
+
+            Intent back = new Intent(ViewMatch.this, ViewDate.class);
+            back.putExtra("email", email);
+            startActivity(back);
         }
 
     }

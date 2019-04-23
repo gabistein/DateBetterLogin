@@ -154,7 +154,7 @@ public class Options extends AppCompatActivity {
     //Navigation Button Handlers
     ///////////////////////////
     /**name: handle_view_profile
-     * action: opens ViewOption for specific id
+     * action: opens ViewMatch for specific id
      * */
     protected void handle_view_profile(String id){
         Intent view_profile= new Intent(Options.this, ViewMatch.class );

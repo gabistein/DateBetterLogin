@@ -14,6 +14,7 @@ import android.widget.Button;
 public class ViewDate extends AppCompatActivity {
 
     private String email;
+
     private int date_id; // something to identify date
     private String inviter_id; // inviter google id
     private String inviter_name; // inviter name
@@ -24,6 +25,7 @@ public class ViewDate extends AppCompatActivity {
     private String location; // location
     private String message; // message
     private String status; // pending-> accept
+
 
 
     @Override
@@ -100,11 +102,13 @@ public class ViewDate extends AppCompatActivity {
     protected void handle_reject(View v){
         //TODO: database entry for rejected date
         //TODO: dialog pop up for reject?
+        //TODO:
         //delete date invite
         //return to dates screen
         Intent dates= new Intent(ViewDate.this, Dates.class);
         dates.putExtra("email", email);
-        startActivity(dates);
+
+      //  startActivity(dates);
 
     }
 
@@ -119,11 +123,15 @@ public class ViewDate extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //TODO: CANCEL DATE
+                        Intent to_dates=new Intent(ViewDate.this, Dates.class);
+                        to_dates.putExtra("email", email);
                     }
                 });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //DO NOTHING HERE
             }
         });
 
@@ -139,7 +147,7 @@ public class ViewDate extends AppCompatActivity {
         String other_id= this.email.equals(inviter_id)? invitee_id: inviter_id;
 
         viewmatch.putExtra("other_id", other_id);
-        viewmatch.putExtra("from", "ViewDate");
+        viewmatch.putExtra("came_from", "view_date");
         viewmatch.putExtra("date_id",date_id);
         viewmatch.putExtra("email", email);
         startActivity(viewmatch);

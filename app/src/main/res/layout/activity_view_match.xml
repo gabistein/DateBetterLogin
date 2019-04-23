@@ -600,46 +600,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center|center_vertical"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_unmatch"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_dark_gradient"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="Unmatch"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_invite"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_dark_gradient"
-                android:onClick="handle_invite"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="Set a Date"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>
