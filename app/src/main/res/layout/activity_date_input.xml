@@ -148,29 +148,20 @@
 
             <EditText
                 android:id="@+id/text_set_address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="3"
                 android:ems="10"
+                android:gravity="center"
+                android:hint="Enter Location"
                 android:imeOptions="actionDone"
                 android:inputType="textPostalAddress|time"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textColorHint="@color/gradient_dark_purple"
+                android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btn_set_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_dark_gradient"
-                android:text="Pick Place"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
