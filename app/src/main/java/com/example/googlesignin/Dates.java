@@ -123,45 +123,46 @@ public class Dates extends AppCompatActivity {
                //  System.out.println(all_vals);
                 if (all_vals.contains(email)) {
 
-                    String[] find_date = all_vals.split(",");
-                    for(int i = 0; i < find_date.length; i++){
-                        if(find_date[i].contains("date")){
-                            String date_only = find_date[i].substring(find_date[i].indexOf("=") +1);
-                            int month;
-                            String month_string = "";
-                            int day;
-                            String day_string = "";
-                            int year;
+                    String[] find_date = string_to_sort(all_vals);
+                    // String date = find_date[0];
 
-                            String[] date_numbers = date_only.split("/");
-                            month = Integer.parseInt(date_numbers[0]);
-                            day = Integer.parseInt(date_numbers[1]);
-                            year = Integer.parseInt(date_numbers[2]);
-                            if(month < 10){
-                               month_string = "0" + month;
-                               month = Integer.parseInt(month_string);
-                            }else{
-                                month_string = Integer.toString(month);
-                            }
-                            if(day<10){
-                                day_string = "0" + day;
-                                day = Integer.parseInt(day_string);
-                            }else{
-                                day_string = Integer.toString(day);
-                            }
-                            String whole_date = year + "-" + month_string + "-" + day_string;
-                            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                            LocalDate now = LocalDate.now();
-                            dtf.format(now);
-                            LocalDate check = LocalDate.parse(whole_date, dtf);
-                            if(check.isBefore(now)){
-                                dataSnapshot.getRef().removeValue();
-                            }else {
-                                add_matches(all_vals);
-                                continue;
-                            }
-                        }
+
+                    String date_only = find_date[0];
+                    int month;
+                    String month_string = "";
+                    int day;
+                    String day_string = "";
+                    int year;
+
+                    String[] date_numbers = date_only.split("/");
+                    month = Integer.parseInt(date_numbers[0].substring(date_numbers[0].indexOf("=")+1));
+                    day = Integer.parseInt(date_numbers[1]);
+                    year = Integer.parseInt(date_numbers[2]);
+                    if(month < 10){
+                       month_string = "0" + month;
+                       month = Integer.parseInt(month_string);
+                    }else{
+                        month_string = Integer.toString(month);
                     }
+                    if(day<10){
+                        day_string = "0" + day;
+                        day = Integer.parseInt(day_string);
+                    }else{
+                        day_string = Integer.toString(day);
+                    }
+                    String whole_date = year + "-" + month_string + "-" + day_string;
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate now = LocalDate.now();
+                    dtf.format(now);
+                    LocalDate check = LocalDate.parse(whole_date, dtf);
+                    if(check.isBefore(now)){
+                        dataSnapshot.getRef().removeValue();
+                    }else {
+                        add_matches(all_vals);
+
+                    }
+
+
 
 
                 }
