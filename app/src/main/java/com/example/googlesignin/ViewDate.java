@@ -91,7 +91,7 @@ public class ViewDate extends AppCompatActivity {
         TextView accepted_message= (TextView)findViewById(R.id.accepted_msg);
 
         //TODO: first check if date status is accepted
-        boolean hide_accept_reject=true;
+        boolean rejected=true;
         boolean accepted= true;
         if(accepted){
             //if date is accepted, regardless of who is invitee or inviter,
@@ -99,19 +99,36 @@ public class ViewDate extends AppCompatActivity {
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
             calendar_btn.setVisibility(calendar_btn.VISIBLE);
             accepted_message.setVisibility(accepted_message.VISIBLE);
+            this.set_message("Date Accepted");
             //make gone
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
 
-        }else if(email.equals(date_id.substring(0, email.length()))){
-            //make gone
+        }else if (rejected){
+            //make visible: view date profile, accepted message
+            view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
+            accepted_message.setVisibility(accepted_message.getVisibility());
+            this.set_message("Date Rejected");
+
+            //make gone: accept, reject, calendar
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
             calendar_btn.setVisibility(calendar_btn.GONE);
-            accepted_message.setVisibility(accepted_message.GONE);
+
+
+
+        } else if(email.equals(date_id.substring(0, email.length()))){
+            //if you are the inviter
+            //make gone: accept, reject, calendar button
+            accept.setVisibility(accept.GONE);
+            reject.setVisibility(reject.GONE);
+            calendar_btn.setVisibility(calendar_btn.GONE);
+
 
             //make visible
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
+            accepted_message.setVisibility(accepted_message.VISIBLE);
+            this.set_message("Date Pending");
         }else{
 
             accept.setVisibility(accept.VISIBLE);
@@ -125,6 +142,12 @@ public class ViewDate extends AppCompatActivity {
 
 
         }
+    }
+
+    //helper to set message box
+    private void set_message(String s){
+        TextView message= (TextView)findViewById(R.id.accepted_msg);
+        message.setText(s);
     }
 
     protected void handle_accept(View v){
