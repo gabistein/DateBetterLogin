@@ -1,9 +1,11 @@
 package com.example.googlesignin;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Dates extends AppCompatActivity {
 
@@ -105,13 +111,53 @@ public class Dates extends AppCompatActivity {
     public void show_dates(String user_to_find){
         reff = FirebaseDatabase.getInstance().getReference().child("Dates");
         reff.orderByKey().addChildEventListener(new ChildEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 // System.out.println(dataSnapshot.getValue().toString());
                 String all_vals = dataSnapshot.getValue().toString();
                //  System.out.println(all_vals);
                 if (all_vals.contains(email)) {
-                    add_matches(all_vals);
+
+                    String[] find_date = all_vals.split(",");
+                    for(int i = 0; i < find_date.length; i++){
+                        if(find_date[i].contains("date")){
+                            String date_only = find_date[i].substring(find_date[i].indexOf("=") +1);
+                            int month;
+                            String month_string = "";
+                            int day;
+                            String day_string = "";
+                            int year;
+
+                            String[] date_numbers = date_only.split("/");
+                            month = Integer.parseInt(date_numbers[0]);
+                            day = Integer.parseInt(date_numbers[1]);
+                            year = Integer.parseInt(date_numbers[2]);
+                            if(month < 10){
+                               month_string = "0" + month;
+                               month = Integer.parseInt(month_string);
+                            }else{
+                                month_string = Integer.toString(month);
+                            }
+                            if(day<10){
+                                day_string = "0" + day;
+                                day = Integer.parseInt(day_string);
+                            }else{
+                                day_string = Integer.toString(day);
+                            }
+                            String whole_date = year + "-" + month_string + "-" + day_string;
+                            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDate now = LocalDate.now();
+                            dtf.format(now);
+                            LocalDate check = LocalDate.parse(whole_date, dtf);
+                            if(check.isBefore(now)){
+                                dataSnapshot.getRef().removeValue();
+                            }else {
+                                add_matches(all_vals);
+                                continue;
+                            }
+                        }
+                    }
 
 
                 }
