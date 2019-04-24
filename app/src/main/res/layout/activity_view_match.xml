@@ -51,7 +51,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/home_btn_background"
-                    android:onClick="handle_home"
+                    android:onClick="handle_back_btn"
                     android:padding="10dp"
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/back" />
@@ -99,9 +99,9 @@
                     android:gravity="center"
                     android:text="Bio"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    app:fontFamily="sans-serif-thin" />
+                    app:fontFamily="sans-serif-condensed-light" />
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                             android:padding="10dp"
                             android:text="enter bio here"
                             android:textColor="@android:color/white"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </ScrollView>
 

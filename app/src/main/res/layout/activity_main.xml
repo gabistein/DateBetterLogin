@@ -19,7 +19,7 @@
         android:fontFamily="sans-serif-thin"
         android:text="Date Better"
         android:textColor="#FFFFFF"
-        android:textSize="76dp"
+        android:textSize="65sp"
         android:textStyle="bold|italic" />
 
 

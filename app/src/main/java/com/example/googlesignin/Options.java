@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+
 public class Options extends AppCompatActivity {
 
     DatabaseReference reff;
@@ -82,24 +84,58 @@ public class Options extends AppCompatActivity {
         Log.v("MYTAG", "trying to add layout in oncreate");
     }
 
+    private String[] string_to_sort(String s){
+        if(s.startsWith("{")){
+            s=s.substring(1);
+        }
+
+        if(s.endsWith("}")){
+            s=s.substring(0, s.length()-1);
+        }
+
+        String [] arr=s.split(",");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=arr[i].trim();
+        }
+        Arrays.sort(arr);
+        System.out.println("Values: "+s);
+        System.out.println("SORTED ARRAY VALS:");
+        for(int i=0;i<arr.length;i++){
+            System.out.println("i: "+i+" value: "+arr[i]);
+        }
+        return arr;
+    }
 
     public void parseValues(String values){
-        String[] traits = values.split(",");
-        // need to figure out which has id
-//        for(int i = 0; i< traits.length; i++){
-//
-//        }
 
-        String id = traits[12].substring(traits[12].indexOf("=") + 1);
+        /**new key for values
+         *age:0
+         * bio:1
+         * drinking:2
+         * earth_is:3
+         * farmer:4
+         * gender:5
+         * id:6
+         * interested_in:7
+         * mb_type:8
+         * name:9
+         * night_in:10
+         * pet:11
+         * politics:12
+         * smoking:13
+         * star_sign:14
+         * */
+        String[] traits = string_to_sort(values);
+        String id = traits[6].substring(traits[6].indexOf("=") + 1);
         if(id.contains("@")){
             id = id.substring(0,id.indexOf("@"));
         }
         final String final_id = id;
 
-        String name = traits[10].substring(traits[10].indexOf("=") + 1);
+        String name = traits[9].substring(traits[9].indexOf("=") + 1);
         final String final_name = name;
         // adding in age
-        String age = traits[13].substring(traits[13].indexOf("=") + 1);
+        String age = traits[0].substring(traits[0].indexOf("=") + 1);
         final String final_age = age;
         // pull list of likes from current user, if list contains, set to unlike, else like;
         final String like;
