@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+
 public class ViewDate extends AppCompatActivity {
 
     private String email;
@@ -88,7 +90,7 @@ public class ViewDate extends AppCompatActivity {
         Button reject= (Button)findViewById(R.id.btn_reject);
         Button view_dates_profile= (Button)findViewById(R.id.btn_view_dates_profile);//
         Button calendar_btn= (Button) findViewById(R.id.btn_add_cal);
-        TextView accepted_message= (TextView)findViewById(R.id.accepted_msg);
+//        TextView accepted_message= (TextView)findViewById(R.id.accepted_msg);
 
         //TODO: first check if date status is accepted
         boolean rejected=false;
@@ -98,8 +100,8 @@ public class ViewDate extends AppCompatActivity {
             // we want to display calendar event and viewother profile
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
             calendar_btn.setVisibility(calendar_btn.VISIBLE);
-            accepted_message.setVisibility(accepted_message.VISIBLE);
-            this.set_message("Date Accepted");
+//            accepted_message.setVisibility(accepted_message.VISIBLE);
+           // this.set_message("Date Accepted");
             //make gone
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
@@ -107,8 +109,8 @@ public class ViewDate extends AppCompatActivity {
         }else if (rejected){
             //make visible: view date profile, accepted message
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
-            accepted_message.setVisibility(accepted_message.getVisibility());
-            this.set_message("Date Rejected");
+//            accepted_message.setVisibility(accepted_message.getVisibility());
+          //  this.set_message("Date Rejected");
 
             //make gone: accept, reject, calendar
             accept.setVisibility(accept.GONE);
@@ -127,14 +129,14 @@ public class ViewDate extends AppCompatActivity {
 
             //make visible
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
-            accepted_message.setVisibility(accepted_message.VISIBLE);
-            this.set_message("Date Pending");
+//            accepted_message.setVisibility(accepted_message.VISIBLE);
+        //    this.set_message("Date Pending");
         }else{
 
             accept.setVisibility(accept.VISIBLE);
             reject.setVisibility(reject.VISIBLE);
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
-            accepted_message.setVisibility(accepted_message.GONE);
+//            accepted_message.setVisibility(accepted_message.GONE);
 
             //make gone
             calendar_btn.setVisibility(calendar_btn.GONE);
@@ -144,11 +146,11 @@ public class ViewDate extends AppCompatActivity {
         }
     }
 
-    //helper to set message box
-    private void set_message(String s){
-        TextView message= (TextView)findViewById(R.id.accepted_msg);
-        message.setText(s);
-    }
+//    //helper to set message box
+//    private void set_message(String s){
+//        TextView message= (TextView)findViewById(R.id.accepted_msg);
+//        message.setText(s);
+//    }
 
     protected void handle_accept(View v){
         final String final_id = date_id;
@@ -216,33 +218,7 @@ public class ViewDate extends AppCompatActivity {
 
     }
 
-    protected void handle_cancel_date(View v){
 
-        //TODO: database cancel date and fix popup
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle("Date Cancellation");
-        builder.setMessage("Are you sure you want to cancel this date? It will be deleted forever.");
-        builder.setPositiveButton("Confirm",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //TODO: CANCEL DATE
-                        Intent to_dates=new Intent(ViewDate.this, Dates.class);
-                        to_dates.putExtra("email", email);
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //DO NOTHING HERE
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-    }
 
     protected void handle_view_dates_profile(View v){
         String inviter_id = "";
@@ -356,6 +332,30 @@ public class ViewDate extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //HELPER to clean array
+    private String[] string_to_sort(String s){
+        if(s.startsWith("{")){
+            s=s.substring(1);
+        }
+
+        if(s.endsWith("}")){
+            s=s.substring(0, s.length()-1);
+        }
+
+        String [] arr=s.split(",");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=arr[i].trim();
+        }
+        Arrays.sort(arr);
+        System.out.println("Values: "+s);
+        System.out.println("SORTED ARRAY VALS:");
+        for(int i=0;i<arr.length;i++){
+            System.out.println("i: "+i+" value: "+arr[i]);
+        }
+        return arr;
+    }
+
+
     public void setExtras(String id){
         // System.out.println("ID is: "+  id);
         final String final_id = id;
@@ -364,16 +364,37 @@ public class ViewDate extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //TODO: date order of values
+                //TODO: set the pending status at top
                 if(dataSnapshot.getKey().toString().equals(final_id)){
-                    System.out.println("here");
                     String all_vals = dataSnapshot.getValue().toString();
+                    System.out.println("all_vals for date: "+all_vals);
+                    String[] vals = string_to_sort(all_vals);
+                    /**key for date vals
+                     * date: 0
+                     * invitee_id:1
+                     * invitee_name:2
+                     * inviter_id:3
+                     * inviter_name:4
+                     * location:5
+                     * message:6
+                     * status:7
+                     * time:8
+                     * */
 
-                    String[] vals = all_vals.split(",");
-                    setTime(vals[4].substring(vals[4].indexOf("=") + 1), vals[0].substring(vals[0].indexOf("=") + 1));
 
-                    setLocation(vals[3].substring(vals[3].indexOf("=") + 1));
+                    for(int i=0;i<vals.length;i++){
+                        System.out.println("i: "+i+" val: "+vals[i]);
+                    }
+                    //TODO: change order
+                    //time, date
+                    setTime(vals[8].substring(vals[8].indexOf("=") + 1), vals[0].substring(vals[0].indexOf("=") + 1));
+                    setLocation(vals[5].substring(vals[5].indexOf("=") + 1));
                     setMessage(vals[6].substring(vals[6].indexOf("=")+1));
-                    setNames(vals[5].substring(vals[5].indexOf("=") + 1), vals[1].substring(vals[1].indexOf("=") + 1));
+                    //invitee, inviter
+                    setNames(vals[2].substring(vals[2].indexOf("=") + 1), vals[4].substring(vals[4].indexOf("=") + 1));
+                    //set status:
+                    setStatus(vals[7].substring(vals[7].indexOf("=")+1));
 
                 }
 
@@ -415,11 +436,23 @@ public class ViewDate extends AppCompatActivity {
         invitee_name_view.setText(invitee);
     }
 
+    public void setStatus(String status){
+        TextView txt_status= (TextView) findViewById(R.id.txt_status);
+        txt_status.setText(status);
+
+    }
     protected void handle_home(View v){
         Intent to_home=new Intent(ViewDate.this, Home.class);
         to_home.putExtra("email", email);
         startActivity(to_home);
     }
+
+    protected void handle_back(View v){
+        Intent to_dates= new Intent(ViewDate.this, Dates.class);
+        to_dates.putExtra("email", email);
+        startActivity(to_dates);
+    }
+
 
 
 }
