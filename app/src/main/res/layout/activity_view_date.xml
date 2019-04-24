@@ -319,21 +319,6 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/accepted_msg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/scroll_background"
-                    android:fontFamily="sans-serif-thin"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Date Accepted"
-                    android:textColor="@color/gradient_dark_purple"
-                    android:textSize="24sp"
-                    android:textStyle="bold|italic" />
-
                 <Button
                     android:id="@+id/btn_accept"
                     android:layout_width="wrap_content"
@@ -371,6 +356,22 @@
                     android:visibility="visible" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/accepted_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/scroll_background"
+                android:fontFamily="sans-serif-thin"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Date Accepted"
+                android:textColor="@color/gradient_dark_purple"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
 
         </LinearLayout>
     </ScrollView>

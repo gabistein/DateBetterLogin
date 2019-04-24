@@ -91,8 +91,8 @@ public class ViewDate extends AppCompatActivity {
         TextView accepted_message= (TextView)findViewById(R.id.accepted_msg);
 
         //TODO: first check if date status is accepted
-        boolean rejected=true;
-        boolean accepted= true;
+        boolean rejected=false;
+        boolean accepted= false;
         if(accepted){
             //if date is accepted, regardless of who is invitee or inviter,
             // we want to display calendar event and viewother profile
