@@ -4,42 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@color/p1"
+    android:gravity="center"
     android:orientation="vertical"
-    android:background="#3923C6"
-    >
+    tools:context=".MainActivity">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="sans-serif-thin"
         android:text="Date Better"
         android:textColor="#FFFFFF"
-        android:fontFamily="sans-serif-black"
         android:textSize="76dp"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"/>
-
+        android:textStyle="bold|italic" />
 
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:colorScheme="auto" />
 
 
     <!--<Button-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/make_account"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:text="Make Account"-->
-        <!--android:background="#FFFFFF"-->
-        <!--android:textColor="#515356"-->
-       <!--/>-->
-
-
-
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/make_account"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:text="Make Account"-->
+    <!--android:background="#FFFFFF"-->
+    <!--android:textColor="#515356"-->
+    <!--/>-->
 
 
 </LinearLayout>

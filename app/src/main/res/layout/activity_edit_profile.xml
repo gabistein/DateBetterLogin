@@ -62,6 +62,20 @@
                         app:srcCompat="@drawable/back" />
                 </RelativeLayout>
 
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center|center_horizontal"
+                    android:text="Edit Your Profile"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic"
+                    app:fontFamily="sans-serif-thin" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
