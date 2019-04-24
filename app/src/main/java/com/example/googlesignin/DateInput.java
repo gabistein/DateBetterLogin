@@ -155,7 +155,7 @@ public class DateInput extends AppCompatActivity {
      * */
 
     protected void handle_invite(View v){
-        Intent intent = new Intent(DateInput.this, Matches.class);
+
         String date = date_text.getText().toString();
         String time = time_text.getText().toString();
         String message = message_text.getText().toString();
@@ -179,7 +179,10 @@ public class DateInput extends AppCompatActivity {
             }
         });
 
-        // startActivity(intent);
+
+        Intent intent = new Intent(DateInput.this, Matches.class);
+        intent.putExtra("email", email);
+        startActivity(intent);
 
     }
 
