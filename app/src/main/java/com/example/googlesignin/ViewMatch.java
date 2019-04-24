@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+
 public class ViewMatch extends AppCompatActivity {
 
     String other_id;
@@ -74,53 +76,56 @@ public class ViewMatch extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
                     values = dataSnapshot.getValue().toString();
-                    System.out.println(values);
-                    value_array = values.split(",");
 
-                    // Set name
-                    setValue(10, R.id.profile_name);
-                    String name = value_array[10].substring(value_array[10].indexOf("=") + 1);
-                    String age = value_array[13].substring(value_array[13].indexOf("=")+1);
+                    //this step removes the surrounding brackets
+                    values=values.substring(1, values.length()-1);
+
+                    value_array = string_to_sort(values);
+
+                    // Set name: 9
+                    setValue(9, R.id.profile_name);
+                    String name = value_array[9].substring(value_array[9].indexOf("=") + 1);
+
+                    //Set age: 0
+                    String age = value_array[0].substring(value_array[0].indexOf("=")+1);
                     TextView nameText = (TextView) findViewById(R.id.profile_name);
                     nameText.setText(name + ", " + age);
 
+
                     // Set Bio
-                    setValue(4, R.id.bio_val);
-
-                    // Set Identifies as
-                    setValue(3, R.id.g_val);
-
-                    // Set interested in
-                    setValue(0, R.id.o_val);
-
-                    // Set star sign
-                    setValue(7, R.id.ss_val);
-
-
-                    // Set MB
-                    setValue(8, R.id.mb_val);
-
-
-                    // Set pet
-                    String pet = value_array[value_array.length-1].substring((value_array[value_array.length-1]).indexOf("=") + 1, (value_array[value_array.length-1]).indexOf(("}")));
-                    TextView pet_text = (TextView) findViewById(R.id.pet_val);
-                    pet_text.setText(pet);
+                    setValue(1, R.id.bio_val);
 
                     // set drinking
                     setValue(2, R.id.drink_val);
 
-                    //set smoking
-                    setValue(9, R.id.smoke_val);
-
-                    // set politics
-                    setValue(1, R.id.politics_val);
                     //set earth
-                    setValue(6,R.id.earth_val);
+                    setValue(3,R.id.earth_val);
 
                     //set farmer
-                    setValue(11, R.id.farmer_val);
+                    setValue(4, R.id.farmer_val);
+
+                    // Set Identifies as
+                    setValue(5, R.id.g_val);
+
+                    // Set interested in
+                    setValue(7, R.id.o_val);
+
+                    // Set MB
+                    setValue(8, R.id.mb_val);
+
                     // set night in/out
-                    setValue(5, R.id.night_val);
+                    setValue(10, R.id.night_val);
+
+                    // Set pet
+                    setValue(11, R.id.pet_val);
+
+                    // set politics
+                    setValue(12, R.id.politics_val);
+
+                    //set smoking
+                    setValue(13, R.id.smoke_val);
+                    // Set star sign
+                    setValue(14, R.id.ss_val);
 
                 }catch(Exception e){
                     System.out.println("hit a null");
@@ -136,6 +141,29 @@ public class ViewMatch extends AppCompatActivity {
         });
 
     }
+
+    private String[] string_to_sort(String s){
+        if(s.startsWith("{")){
+            s=s.substring(1);
+        }
+
+        if(s.endsWith("}")){
+            s=s.substring(0, s.length()-1);
+        }
+
+        String [] arr=s.split(",");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=arr[i].trim();
+        }
+        Arrays.sort(arr);
+        System.out.println("Values: "+s);
+        System.out.println("SORTED ARRAY VALS:");
+        for(int i=0;i<arr.length;i++){
+            System.out.println("i: "+i+" value: "+arr[i]);
+        }
+        return arr;
+    }
+
 
 
     public void setValue(int i, int text_view_id){

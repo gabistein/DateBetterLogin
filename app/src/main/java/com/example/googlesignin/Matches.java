@@ -169,8 +169,13 @@ public class Matches extends AppCompatActivity {
                 // System.out.println(dataSnapshot.getValue().toString());
                 if(final_match_list.contains(dataSnapshot.getKey())){
                     String all_vals = dataSnapshot.getValue().toString();
+                    System.out.println("all vals string: "+all_vals);
+
                     String[] all_vals_array = all_vals.split(",");
 
+                    for(int i=0;i<all_vals_array.length;i++){
+                        System.out.println("i:"+i+" val: "+ all_vals_array[i]);
+                    }
                     String id = all_vals_array[12].substring(all_vals_array[12].indexOf("=") + 1);
                     String name = all_vals_array[10].substring(all_vals_array[10].indexOf("=") + 1);
                     String age = all_vals_array[13].substring(all_vals_array[13].indexOf("=") + 1);

@@ -112,6 +112,7 @@
                             android:layout_height="fill_parent"
                             android:padding="10dp"
                             android:text="enter bio here"
+                            android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
                 </ScrollView>

@@ -175,50 +175,75 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
+                    /**new key for values
+                    * age:0
+                    * bio:1
+                    * drinking:2
+                    * earth_is:3
+                    * farmer:4
+                    * gender:5
+                    * id:6
+                    * interested_in:7
+                    * mb_type:8
+                    * name:9
+                    * night_in:10
+                    * pet:11
+                    * politics:12
+                    * smoking:13
+                    * star_sign:14
+                    * */
                     String values = dataSnapshot.getValue().toString();
-                    System.out.println(values);
-                    value_array = values.split(",");
+                    //this step removes the surrounding brackets
+                    values=values.substring(1, values.length()-1);
 
-                    // Set name
-                    setHint(10, R.id.profile_name);
+                    value_array=string_to_sort(values);
 
-                    // Set age
-                    setHint(13,R.id.birthday);
-                    // Set Bio
-                    setHint(4, R.id.bio_val);
-                    // set identifies as
-                    setSpinner(3, R.array.identify_as, R.id.g_val);
-                    // set orientation
-                    setSpinner(0, R.array.interested_in, R.id.o_val);
-                    // set starsign
-                    setSpinner(7, R.array.star_options, R.id.ss_val);
+                    //Set age: 0
+                    setHint(0,R.id.birthday);
 
-                    // set mb
-                    setSpinner(8, R.array.mb_options, R.id.mb_val);
+                    // Set Bio: 1
+                    setHint(1, R.id.bio_val);
 
-                    // Set pet
-
-                    String[] pet_options = getResources().getStringArray(R.array.pet_options);
-                    Spinner spinner = (Spinner) findViewById(R.id.pet_val);
-                    spinner.setSelection(findIndex(pet_options, value_array[value_array.length - 1].substring((value_array[value_array.length-1]).indexOf("=") + 1, (value_array[value_array.length -1]).indexOf(("}")))));
-
-
-//                // set smoking
-                    setSpinner(9, R.array.smoke_options, R.id.smoke_val);
-
-                    //set drinking
+                    //set drinking: 2
                     setSpinner(2, R.array.drink_options, R.id.drink_val);
 
-//
-//                // set politicis
-                    setSpinner(1, R.array.politics_options, R.id.politics_val);
-//
-                // set earth
-                    setSpinner(6, R.array.earth_options, R.id.earth_val);
-                    //setfamer
-                    setSpinner(11, R.array.farm_options, R.id.farm_val);
-                    //set night in or out
-                    setSpinner(5, R.array.night_options, R.id.night_val);
+                    // set earth: 3
+                    setSpinner(3, R.array.earth_options, R.id.earth_val);
+
+                    //setfamer: 4
+                    setSpinner(4, R.array.farm_options, R.id.farm_val);
+
+                    // set gender/identify as: 5
+                    setSpinner(5, R.array.identify_as, R.id.g_val);
+
+                    //set interested in: 7
+                    // set orientation
+                    setSpinner(7, R.array.interested_in, R.id.o_val);
+
+                    // set mb: 8
+                    setSpinner(8, R.array.mb_options, R.id.mb_val);
+
+                    // Set name: 9
+                    setHint(9, R.id.profile_name);
+
+
+                    //set night in or out: 10
+                    setSpinner(10, R.array.night_options, R.id.night_val);
+
+
+                    // Set pet: 11
+                    setSpinner(11, R.array.pet_options, R.id.pet_val);
+
+                    // set politicis: 12
+                    setSpinner(12, R.array.politics_options, R.id.politics_val);
+
+                    // set smoking: 13
+                    setSpinner(13, R.array.smoke_options, R.id.smoke_val);
+
+                    // set starsign: 14
+                    setSpinner(14, R.array.star_options, R.id.ss_val);
+
+
                 }catch(Exception e){
                     System.out.println("hit a null in edit");
                 }
@@ -236,6 +261,29 @@ public class EditProfile extends AppCompatActivity {
 
 
     }
+
+    private String[] string_to_sort(String s){
+        if(s.startsWith("{")){
+            s=s.substring(1);
+        }
+
+        if(s.endsWith("}")){
+            s=s.substring(0, s.length()-1);
+        }
+
+        String [] arr=s.split(",");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=arr[i].trim();
+        }
+        Arrays.sort(arr);
+        System.out.println("Values: "+s);
+        System.out.println("SORTED ARRAY VALS:");
+        for(int i=0;i<arr.length;i++){
+            System.out.println("i: "+i+" value: "+arr[i]);
+        }
+        return arr;
+    }
+
 
     public String getSpinnerText(int id){
         Spinner mySpinner = (Spinner) findViewById(id);
