@@ -20,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -152,7 +154,15 @@ public class EditProfile extends AppCompatActivity {
 
           Intent to_edit = new Intent(EditProfile.this, Profile.class);
           to_edit.putExtra("email", signInId);
-          startActivity(to_edit);
+          final Intent i=to_edit;
+          new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                startActivity(i);
+            }
+        }, 2000);
+
+
     }
 
 

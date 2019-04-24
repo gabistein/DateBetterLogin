@@ -8,215 +8,229 @@
     tools:context=".DateInput">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/gradient"
-        android:orientation="vertical"
-        android:paddingBottom="20dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical">
-
-            <ImageButton
-                android:id="@+id/home"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|top"
-                android:background="@drawable/home_btn_background"
-                android:onClick="handle_home"
-                android:padding="5dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/home" />
-
-            <ImageButton
-                android:id="@+id/back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="right"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="9dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/home_btn_background"
-                android:onClick="handle_home"
-                android:padding="10dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/back" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Date Invitation"
-            android:textColor="@android:color/white"
-            android:textSize="40sp"
-            android:textStyle="bold|italic"
-            app:fontFamily="sans-serif-thin" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/text_set_date"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/gradient"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/home"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="right|top"
+                        android:background="@drawable/home_btn_background"
+                        android:onClick="handle_home"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/home" />
+
+                    <ImageButton
+                        android:id="@+id/back"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="right"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/home_btn_background"
+                        android:onClick="handle_home"
+                        android:padding="10dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/back" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Date Invitation"
+                    android:textColor="@android:color/white"
+                    android:textSize="40sp"
+                    android:textStyle="bold|italic"
+                    app:fontFamily="sans-serif-thin" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="3"
-                android:ems="10"
-                android:imeOptions="actionDone"
-                android:inputType="date|time"
-                android:padding="10dp" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <EditText
+                        android:id="@+id/text_set_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="3"
+                        android:ems="10"
+                        android:imeOptions="actionDone"
+                        android:inputType="date|time"
+                        android:padding="10dp" />
+
+                    <Button
+                        android:id="@+id/btn_set_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_dark_gradient"
+                        android:text="Pick Date"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <EditText
+                        android:id="@+id/text_set_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="3"
+                        android:ems="10"
+                        android:imeOptions="actionDone"
+                        android:inputType="time"
+                        android:padding="10dp" />
+
+                    <Button
+                        android:id="@+id/btn_set_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_dark_gradient"
+                        android:text="Pick Time"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <EditText
+                        android:id="@+id/text_set_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="3"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Enter Location"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPostalAddress|time"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gradient_dark_purple"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/bio_background"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:id="@+id/bio_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
+                        android:text="Message"
+                        android:textColor="@color/gradient_dark_purple"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/bio_val"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="top|left"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/gradient_dark_purple"
+                        android:textColorHint="@color/gradient_dark_purple"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </LinearLayout>
 
             <Button
-                android:id="@+id/btn_set_date"
+                android:id="@+id/btn_send_invite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_dark_gradient"
-                android:text="Pick Date"
+                android:onClick="handle_invite"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Send Invite"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <EditText
-                android:id="@+id/text_set_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="3"
-                android:ems="10"
-                android:imeOptions="actionDone"
-                android:inputType="time"
-                android:padding="10dp" />
-
-            <Button
-                android:id="@+id/btn_set_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_dark_gradient"
-                android:text="Pick Time"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <EditText
-                android:id="@+id/text_set_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="3"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Enter Location"
-                android:imeOptions="actionDone"
-                android:inputType="textPostalAddress|time"
-                android:padding="10dp"
-                android:textColorHint="@color/gradient_dark_purple"
-                android:textSize="18sp" />
 
         </LinearLayout>
+    </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="10dp"
-            android:layout_weight="4"
-            android:background="@drawable/bio_background"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:weightSum="4">
-
-            <TextView
-                android:id="@+id/bio_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:imeOptions="actionDone"
-                android:text="Message"
-                android:textColor="@color/gradient_dark_purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/bio_val"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:gravity="top|left"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textColor="@color/gradient_dark_purple"
-                android:textColorHint="@color/gradient_dark_purple"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_send_invite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/btn_dark_gradient"
-        android:onClick="handle_invite"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="Send Invite"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 </LinearLayout>

@@ -72,6 +72,7 @@ public class ViewDate extends AppCompatActivity {
                     if(all_vals.contains("accept")){
                         // change here
                         changeAccepted();
+
                     }else if(all_vals.contains("reject")){
                         // change here
                         changeRejected();
@@ -109,6 +110,7 @@ public class ViewDate extends AppCompatActivity {
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
 
+            setStatus("Accepted");
 
     }
 
@@ -139,6 +141,7 @@ public class ViewDate extends AppCompatActivity {
 
         }
 
+        setStatus("Pending");
     }
 
 
@@ -157,6 +160,7 @@ public class ViewDate extends AppCompatActivity {
         accept.setVisibility(accept.GONE);
         reject.setVisibility(reject.GONE);
         calendar_btn.setVisibility(calendar_btn.GONE);
+        setStatus("Rejected");
     }
 
     protected void handle_accept(View v){

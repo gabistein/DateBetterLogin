@@ -85,6 +85,13 @@ public class Dates extends AppCompatActivity {
      * action: creates DateTile object
      * */
     protected DateTile create_date(String inviter_name, String invitee_name, String status, String date_id){
+        if(status.equals("accept")){
+            status="Accepted";
+        }else if(status.equals("reject")){
+            status="Rejected";
+        }else{
+            status="Pending";
+        }
         DateTile date_tile= new DateTile(this);
         //TODO: ideally set name instead of id but need
         date_tile.set_all(invitee_name,inviter_name, status);
