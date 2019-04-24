@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,11 +17,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ViewDate extends AppCompatActivity {
 
@@ -41,6 +35,7 @@ public class ViewDate extends AppCompatActivity {
         date_id = getIntent().getStringExtra("date_id");
         email=getIntent().getStringExtra("email");
         setExtras(date_id);
+        determine_visibility();
         // get values
         // lol why is this happening
 //        new Timer().schedule(new TimerTask() {
@@ -69,7 +64,9 @@ public class ViewDate extends AppCompatActivity {
         //determine whether current user invited (inwhich case pass in true
         //or if current user  is invitee but has already accepted date (true_
         //else: pass in false and accept and reject will appear
+
         this.determine_visibility();
+
 
 
 
@@ -86,6 +83,7 @@ public class ViewDate extends AppCompatActivity {
      * */
     protected void determine_visibility(){
         //TODO: determine if inviter is current profile
+        // are you inviter
         Button accept= (Button)findViewById(R.id.btn_accept);
         Button reject= (Button)findViewById(R.id.btn_reject);
         Button view_dates_profile= (Button)findViewById(R.id.btn_view_dates_profile);//
@@ -101,12 +99,11 @@ public class ViewDate extends AppCompatActivity {
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
             calendar_btn.setVisibility(calendar_btn.VISIBLE);
             accepted_message.setVisibility(accepted_message.VISIBLE);
-
             //make gone
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
 
-        }else if(hide_accept_reject){
+        }else if(email.equals(date_id.substring(0, email.length()))){
             //make gone
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
@@ -116,7 +113,7 @@ public class ViewDate extends AppCompatActivity {
             //make visible
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
         }else{
-            //make visible
+
             accept.setVisibility(accept.VISIBLE);
             reject.setVisibility(reject.VISIBLE);
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
@@ -131,18 +128,62 @@ public class ViewDate extends AppCompatActivity {
     }
 
     protected void handle_accept(View v){
-        //TODO: database entry for accepted date
-        this.determine_visibility();
+        final String final_id = date_id;
+        reff = FirebaseDatabase.getInstance().getReference().child("Dates");
+        reff.child(final_id).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getKey().toString().equals(final_id)){
+                    updateStatusAccept(reff.child(final_id));
+
+                }
 
 
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        determine_visibility();
+
+    }
+    public void updateStatusAccept(DatabaseReference db){
+        db.child("status").setValue("accept"); //id
+
+    }
+    public void updateStatusReject(DatabaseReference db){
+        db.child("status").setValue("reject"); //id
 
 
     }
 
     protected void handle_reject(View v){
-        //TODO: database entry for rejected date
-        //TODO: dialog pop up for reject?
-        //TODO:
+        //TODO: database entry for rejected date, update status to reject
+        //TODO: determine visibility to say at bottom has been rejected
+        final String final_id = date_id;
+        reff = FirebaseDatabase.getInstance().getReference().child("Dates");
+        reff.child(final_id).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getKey().toString().equals(final_id)){
+                    updateStatusReject(reff.child(final_id));
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         //delete date invite
         //return to dates screen
         Intent dates= new Intent(ViewDate.this, Dates.class);
@@ -183,12 +224,12 @@ public class ViewDate extends AppCompatActivity {
     protected void handle_view_dates_profile(View v){
         String inviter_id = "";
         String invitee_id = "";
-        if(email.charAt(0)==date_id.charAt(0)){
+        if(email.equals(date_id.substring(0, email.length()))){
             inviter_id = email;
-            invitee_id = email.substring(email.length());
+            invitee_id = date_id.substring(email.length());
         }else {
             invitee_id = email;
-            inviter_id = email.substring(email.length());
+            inviter_id = date_id.substring(email.length());
         }
         //go to view match but pass in extra to identify where we came from
         Intent viewmatch= new Intent(ViewDate.this, ViewMatch.class);
@@ -263,7 +304,7 @@ public class ViewDate extends AppCompatActivity {
         // email could be either depending on if inviter and invitee
         String inviter_id = "";
         String invitee_id = "";
-        if(email.charAt(0)==date_id.charAt(0)){
+        if(email.equals(date_id.substring(0, email.length()))){
             inviter_id = email + "@gmail.com";
             invitee_id = date_id.substring(email.length()) + "@gmail.com";
             System.out.println("inviter_id:" + inviter_id +":");
@@ -349,6 +390,12 @@ public class ViewDate extends AppCompatActivity {
 
         TextView invitee_name_view = (TextView)findViewById(R.id.invitee_name);
         invitee_name_view.setText(invitee);
+    }
+
+    protected void handle_home(View v){
+        Intent to_home=new Intent(ViewDate.this, Home.class);
+        to_home.putExtra("email", email);
+        startActivity(to_home);
     }
 
 

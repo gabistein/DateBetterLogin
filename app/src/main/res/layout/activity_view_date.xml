@@ -360,7 +360,7 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_gradient"
-                    android:onClick="handle_invite"
+                    android:onClick="handle_reject"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:text="Reject"
