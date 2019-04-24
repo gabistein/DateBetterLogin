@@ -26,6 +26,7 @@ public class ViewDate extends AppCompatActivity {
 
     DatabaseReference reff;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,34 +37,7 @@ public class ViewDate extends AppCompatActivity {
         email=getIntent().getStringExtra("email");
         setExtras(date_id);
         determine_visibility();
-        // get values
-        // lol why is this happening
-//        new Timer().schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                TextView when_view = (TextView) findViewById(R.id.when);
-//                System.out.println(when_view.getText().toString());
-//            }
-//        }, 2000);
 
-//        String[] when_text = when_view.getText().toString().split(",");
-//        time = when_text[1];
-//        date = when_text[0];
-//        System.out.println(time+", " + date);
-
-
-
-
-
-
-
-
-
-
-        //TODO:
-        //determine whether current user invited (inwhich case pass in true
-        //or if current user  is invitee but has already accepted date (true_
-        //else: pass in false and accept and reject will appear
 
         this.determine_visibility();
 
@@ -83,7 +57,41 @@ public class ViewDate extends AppCompatActivity {
      * */
     protected void determine_visibility(){
         //TODO: determine if inviter is current profile
-        // are you inviter
+        // get status from db
+        final String final_id = date_id;
+
+        reff = FirebaseDatabase.getInstance().getReference().child("Dates");
+        reff.child(date_id).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getKey().equals(final_id)){
+                    String all_vals = dataSnapshot.getValue().toString();
+                    if(all_vals.contains("accept")){
+                        // change here
+
+                    }else if(all_vals.contains("reject")){
+                        // change here
+
+                    }else{
+                        // change here for pending
+
+                    }
+
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         Button accept= (Button)findViewById(R.id.btn_accept);
         Button reject= (Button)findViewById(R.id.btn_reject);
         Button view_dates_profile= (Button)findViewById(R.id.btn_view_dates_profile);//
