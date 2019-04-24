@@ -69,13 +69,13 @@ public class ViewDate extends AppCompatActivity {
                     String all_vals = dataSnapshot.getValue().toString();
                     if(all_vals.contains("accept")){
                         // change here
-
+                        changeAccepted();
                     }else if(all_vals.contains("reject")){
                         // change here
-
+                        changeRejected();
                     }else{
                         // change here for pending
-
+                        changePending();
                     }
 
 
@@ -91,48 +91,85 @@ public class ViewDate extends AppCompatActivity {
             }
         });
 
-
-        Button accept= (Button)findViewById(R.id.btn_accept);
-        Button reject= (Button)findViewById(R.id.btn_reject);
-        Button view_dates_profile= (Button)findViewById(R.id.btn_view_dates_profile);//
-        Button calendar_btn= (Button) findViewById(R.id.btn_add_cal);
-        TextView accepted_message= (TextView)findViewById(R.id.accepted_msg);
+    }
+    private void changeAccepted() {
+        Button accept = (Button) findViewById(R.id.btn_accept);
+        Button reject = (Button) findViewById(R.id.btn_reject);
+        Button view_dates_profile = (Button) findViewById(R.id.btn_view_dates_profile);//
+        Button calendar_btn = (Button) findViewById(R.id.btn_add_cal);
+        TextView accepted_message = (TextView) findViewById(R.id.accepted_msg);
 
         //TODO: first check if date status is accepted
-        boolean hide_accept_reject=true;
-        boolean accepted= true;
-        if(accepted){
+
             //if date is accepted, regardless of who is invitee or inviter,
             // we want to display calendar event and viewother profile
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
             calendar_btn.setVisibility(calendar_btn.VISIBLE);
             accepted_message.setVisibility(accepted_message.VISIBLE);
+            this.set_message("Date Accepted");
             //make gone
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
 
-        }else if(email.equals(date_id.substring(0, email.length()))){
-            //make gone
+
+
+    }
+
+    private void changePending(){
+        Button accept = (Button) findViewById(R.id.btn_accept);
+        Button reject = (Button) findViewById(R.id.btn_reject);
+        Button view_dates_profile = (Button) findViewById(R.id.btn_view_dates_profile);//
+        Button calendar_btn = (Button) findViewById(R.id.btn_add_cal);
+        TextView accepted_message = (TextView) findViewById(R.id.accepted_msg);
+
+
+      if(email.equals(date_id.substring(0, email.length()))) {
+            //if you are the inviter
+            //make gone: accept, reject, calendar button
             accept.setVisibility(accept.GONE);
             reject.setVisibility(reject.GONE);
             calendar_btn.setVisibility(calendar_btn.GONE);
-            accepted_message.setVisibility(accepted_message.GONE);
+
 
             //make visible
             view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
-        }else{
+            accepted_message.setVisibility(accepted_message.VISIBLE);
+            this.set_message("Date Pending");
+        } else{
+          accept.setVisibility(accept.VISIBLE);
+          reject.setVisibility(reject.VISIBLE);
+          view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
+          accepted_message.setVisibility(accepted_message.GONE);
 
-            accept.setVisibility(accept.VISIBLE);
-            reject.setVisibility(reject.VISIBLE);
-            view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
-            accepted_message.setVisibility(accepted_message.GONE);
-
-            //make gone
-            calendar_btn.setVisibility(calendar_btn.GONE);
-
-
-
+          //make gone
+          calendar_btn.setVisibility(calendar_btn.GONE);
         }
+
+    }
+
+    private void changeRejected(){
+
+        Button accept = (Button) findViewById(R.id.btn_accept);
+        Button reject = (Button) findViewById(R.id.btn_reject);
+        Button view_dates_profile = (Button) findViewById(R.id.btn_view_dates_profile);//
+        Button calendar_btn = (Button) findViewById(R.id.btn_add_cal);
+        TextView accepted_message = (TextView) findViewById(R.id.accepted_msg);
+
+        view_dates_profile.setVisibility(view_dates_profile.VISIBLE);
+        accepted_message.setVisibility(accepted_message.getVisibility());
+        this.set_message("Date Rejected");
+
+        //make gone: accept, reject, calendar
+        accept.setVisibility(accept.GONE);
+        reject.setVisibility(reject.GONE);
+        calendar_btn.setVisibility(calendar_btn.GONE);
+
+
+    }
+    //helper to set message box
+    private void set_message(String s){
+        TextView message= (TextView)findViewById(R.id.accepted_msg);
+        message.setText(s);
     }
 
     protected void handle_accept(View v){
@@ -236,14 +273,20 @@ public class ViewDate extends AppCompatActivity {
             inviter_id = email;
             invitee_id = date_id.substring(email.length());
         }else {
+
             invitee_id = email;
-            inviter_id = date_id.substring(email.length());
+            int difference = date_id.length() - email.length();
+            inviter_id = date_id.substring(0,difference);
+
         }
+        System.out.println("in view date profile, invitee id: " + invitee_id);
+        System.out.println("in view date profile, inviter id: " + inviter_id);
         //go to view match but pass in extra to identify where we came from
         Intent viewmatch= new Intent(ViewDate.this, ViewMatch.class);
         //TODO: also need to put matches id by querying date id and getting the other id
+        // get this to work for both
          String other_id= this.email.equals(inviter_id)? invitee_id: inviter_id;
-
+            // System.out.println("other id in view date " + other_id );
         viewmatch.putExtra("other_id", other_id);
         viewmatch.putExtra("came_from", "view_date");
         viewmatch.putExtra("date_id",date_id);
@@ -315,13 +358,14 @@ public class ViewDate extends AppCompatActivity {
         if(email.equals(date_id.substring(0, email.length()))){
             inviter_id = email + "@gmail.com";
             invitee_id = date_id.substring(email.length()) + "@gmail.com";
-            System.out.println("inviter_id:" + inviter_id +":");
-            System.out.println("invitee_id"+invitee_id+":");
+
         }else {
+
+            int difference = date_id.length() - email.length();
+            inviter_id = date_id.substring(0,difference) + "gmail.com";
             invitee_id = email + "@gmail.com";
-            inviter_id = date_id.substring(email.length()) + "@gmail.com";
-            System.out.println("inviter_id:" + inviter_id +":");
-            System.out.println("invitee_id"+invitee_id+":");
+
+
         }
 //        System.out.println("date:" + date + ":");
 //        System.out.println("time:" + time + ":");
@@ -350,7 +394,7 @@ public class ViewDate extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.getKey().toString().equals(final_id)){
-                    System.out.println("here");
+
                     String all_vals = dataSnapshot.getValue().toString();
 
                     String[] vals = all_vals.split(",");

@@ -29,7 +29,7 @@ public class ViewMatch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_match);
         email=getIntent().getStringExtra("email");
-
+        System.out.println("in match" + email);
         //testing if info is being passed
         other_id= getIntent().getStringExtra("other_id");
         email = getIntent().getStringExtra("email");
