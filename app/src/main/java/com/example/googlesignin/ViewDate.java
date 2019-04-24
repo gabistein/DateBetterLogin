@@ -4,52 +4,66 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.provider.CalendarContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ViewDate extends AppCompatActivity {
 
     private String email;
 
-    private int date_id; // something to identify date
-    private String inviter_id; // inviter google id
-    private String inviter_name; // inviter name
-    private String invitee_id; // invitee google id
-    private String invitee_name; //invittee name
-    private String date; // day of year
-    private String time; // time of year
-    private String location; // location
-    private String message; // message
-    private String status; // pending-> accept
+    private String date_id; // something to identify date
 
-
+    DatabaseReference reff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_date);
 
+
+        date_id = getIntent().getStringExtra("date_id");
         email=getIntent().getStringExtra("email");
+        setExtras(date_id);
+        // get values
+        // lol why is this happening
+//        new Timer().schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                TextView when_view = (TextView) findViewById(R.id.when);
+//                System.out.println(when_view.getText().toString());
+//            }
+//        }, 2000);
 
-        date_id=getIntent().getIntExtra("date_id",0);
-        //TODO: change to pull cur_id however Gabi did it for other pages
+//        String[] when_text = when_view.getText().toString().split(",");
+//        time = when_text[1];
+//        date = when_text[0];
+//        System.out.println(time+", " + date);
 
-        //TODO: query table and get info to set all fields
-        date_id=1;
-        inviter_id= "sarahganci@gmail.com";
-        inviter_name= "Sarah";
-        invitee_id="gabi@example.com";
-        invitee_name="Gabi";
-        date="4/23/2019";
-        //time currently in hour:minute am/pm
-        time="12:00pm";
-        location="211 S Columbia Street";
-        message="lets get some scones";
-        status="pending";
+
+
+
+
+
+
+
+
 
         //TODO:
         //determine whether current user invited (inwhich case pass in true
@@ -141,10 +155,19 @@ public class ViewDate extends AppCompatActivity {
     }
 
     protected void handle_view_dates_profile(View v){
+        String inviter_id = "";
+        String invitee_id = "";
+        if(email.charAt(0)==date_id.charAt(0)){
+            inviter_id = email;
+            invitee_id = email.substring(email.length());
+        }else {
+            invitee_id = email;
+            inviter_id = email.substring(email.length());
+        }
         //go to view match but pass in extra to identify where we came from
         Intent viewmatch= new Intent(ViewDate.this, ViewMatch.class);
         //TODO: also need to put matches id by querying date id and getting the other id
-        String other_id= this.email.equals(inviter_id)? invitee_id: inviter_id;
+         String other_id= this.email.equals(inviter_id)? invitee_id: inviter_id;
 
         viewmatch.putExtra("other_id", other_id);
         viewmatch.putExtra("came_from", "view_date");
@@ -192,12 +215,43 @@ public class ViewDate extends AppCompatActivity {
         cal.set(year,month, day, hour, minute);
         return cal;
     }
-
+// potentially pull from text when add event is clicked
 
     protected void handle_add_event(View v){
+        TextView when_view = (TextView) findViewById(R.id.when);
+       String[] date_time = when_view.getText().toString().split(",");
+       String date = date_time[0];
+       String time = date_time[1].substring(1);
+        TextView inviter_name_view = (TextView)findViewById(R.id.inviter_name);
+        String inviter_name = inviter_name_view.getText().toString();
 
-        Calendar beginTime = create_start(this.date, this.time);
-        Calendar endTime= create_end(this.date, this.time);
+
+        TextView invitee_name_view = (TextView)findViewById(R.id.invitee_name);
+        String invitee_name = invitee_name_view.getText().toString();
+        TextView message_view = (TextView)findViewById(R.id.date_message);
+        String message = message_view.getText().toString();
+        TextView where_view = (TextView)findViewById(R.id.where);
+        String location = where_view.getText().toString();
+        // hacky stuff to get ids
+        // first email is inviter on date_id, second email is invitee on date_id
+        // email could be either depending on if inviter and invitee
+        String inviter_id = "";
+        String invitee_id = "";
+        if(email.charAt(0)==date_id.charAt(0)){
+            inviter_id = email + "@gmail.com";
+            invitee_id = date_id.substring(email.length()) + "@gmail.com";
+            System.out.println("inviter_id:" + inviter_id +":");
+            System.out.println("invitee_id"+invitee_id+":");
+        }else {
+            invitee_id = email + "@gmail.com";
+            inviter_id = date_id.substring(email.length()) + "@gmail.com";
+            System.out.println("inviter_id:" + inviter_id +":");
+            System.out.println("invitee_id"+invitee_id+":");
+        }
+//        System.out.println("date:" + date + ":");
+//        System.out.println("time:" + time + ":");
+        Calendar beginTime = create_start(date, time);
+        Calendar endTime= create_end(date, time);
 
        // long temp= beginTime.getTimeInMillis();
 
@@ -206,20 +260,70 @@ public class ViewDate extends AppCompatActivity {
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
                 .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
                 .putExtra(CalendarContract.Events.TITLE, "Blind Date: "+inviter_name+" and "+invitee_name)
-                .putExtra(CalendarContract.Events.DESCRIPTION, this.message)
-                .putExtra(CalendarContract.Events.EVENT_LOCATION, this.location)
-                .putExtra(Intent.EXTRA_EMAIL, this.inviter_id+","+this.invitee_id);
+                .putExtra(CalendarContract.Events.DESCRIPTION, message)
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, location)
+                .putExtra(Intent.EXTRA_EMAIL, inviter_id+","+invitee_id);
         startActivity(intent);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        if(resultCode == RESULT_OK){
-//           Log.v("RESULT",data.getIntExtra("result",-1)+"");
-//        }
-//
-//    }
+    public void setExtras(String id){
+        // System.out.println("ID is: "+  id);
+        final String final_id = id;
+        reff = FirebaseDatabase.getInstance().getReference().child("Dates");
+        reff.child(id).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getKey().toString().equals(final_id)){
+                    System.out.println("here");
+                    String all_vals = dataSnapshot.getValue().toString();
+
+                    String[] vals = all_vals.split(",");
+                    setTime(vals[4].substring(vals[4].indexOf("=") + 1), vals[0].substring(vals[0].indexOf("=") + 1));
+
+                    setLocation(vals[3].substring(vals[3].indexOf("=") + 1));
+                    setMessage(vals[6].substring(vals[6].indexOf("=")+1));
+                    setNames(vals[5].substring(vals[5].indexOf("=") + 1), vals[1].substring(vals[1].indexOf("=") + 1));
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    public void setTime(String time, String date){
+        TextView when_view = (TextView) findViewById(R.id.when);
+        when_view.setText(date + ", " + time);
+
+    }
+
+    public void setLocation(String location){
+
+        TextView where_view = (TextView)findViewById(R.id.where);
+        where_view.setText(location);
+
+    }
+
+    public void setMessage(String message){
+        TextView message_view = (TextView)findViewById(R.id.date_message);
+        message_view.setText(message);
+    }
+
+    public void setNames(String invitee, String inviter){
+        TextView inviter_name_view = (TextView)findViewById(R.id.inviter_name);
+        inviter_name_view.setText(inviter);
+
+
+        TextView invitee_name_view = (TextView)findViewById(R.id.invitee_name);
+        invitee_name_view.setText(invitee);
+    }
 
 
 }
