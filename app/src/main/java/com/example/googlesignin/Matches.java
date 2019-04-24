@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+
 public class Matches extends AppCompatActivity {
     String user;
 
@@ -157,10 +159,32 @@ public class Matches extends AppCompatActivity {
     }
 
 
+    private String[] string_to_sort(String s){
+        if(s.startsWith("{")){
+            s=s.substring(1);
+        }
+
+        if(s.endsWith("}")){
+            s=s.substring(0, s.length()-1);
+        }
+
+        String [] arr=s.split(",");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=arr[i].trim();
+        }
+        Arrays.sort(arr);
+        System.out.println("Values: "+s);
+        System.out.println("SORTED ARRAY VALS:");
+        for(int i=0;i<arr.length;i++){
+            System.out.println("i: "+i+" value: "+arr[i]);
+        }
+        return arr;
+    }
 
 
 
     public void getProfile(String match_list){
+
         final String final_match_list = match_list;
         reff = FirebaseDatabase.getInstance().getReference().child("Profile");
         reff.orderByKey().addChildEventListener(new ChildEventListener() {
@@ -168,17 +192,34 @@ public class Matches extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 // System.out.println(dataSnapshot.getValue().toString());
                 if(final_match_list.contains(dataSnapshot.getKey())){
+                    /**new key for values
+                     *age:0
+                     * bio:1
+                     * drinking:2
+                     * earth_is:3
+                     * farmer:4
+                     * gender:5
+                     * id:6
+                     * interested_in:7
+                     * mb_type:8
+                     * name:9
+                     * night_in:10
+                     * pet:11
+                     * politics:12
+                     * smoking:13
+                     * star_sign:14
+                     * */
                     String all_vals = dataSnapshot.getValue().toString();
                     System.out.println("all vals string: "+all_vals);
 
-                    String[] all_vals_array = all_vals.split(",");
+                    String[] all_vals_array =string_to_sort(all_vals);
 
-                    for(int i=0;i<all_vals_array.length;i++){
-                        System.out.println("i:"+i+" val: "+ all_vals_array[i]);
-                    }
-                    String id = all_vals_array[12].substring(all_vals_array[12].indexOf("=") + 1);
-                    String name = all_vals_array[10].substring(all_vals_array[10].indexOf("=") + 1);
-                    String age = all_vals_array[13].substring(all_vals_array[13].indexOf("=") + 1);
+//                    for(int i=0;i<all_vals_array.length;i++){
+//                        System.out.println("i:"+i+" val: "+ all_vals_array[i]);
+//                    }
+                    String id = all_vals_array[6].substring(all_vals_array[6].indexOf("=") + 1);
+                    String name = all_vals_array[9].substring(all_vals_array[9].indexOf("=") + 1);
+                    String age = all_vals_array[0].substring(all_vals_array[0].indexOf("=") + 1);
                     setOption(id, name, age,"100");
                 }
             }

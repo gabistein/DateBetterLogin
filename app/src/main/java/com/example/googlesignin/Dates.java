@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+
 public class Dates extends AppCompatActivity {
 
     private String email;
@@ -140,9 +142,54 @@ public class Dates extends AppCompatActivity {
     }
 
     public void add_matches(String to_add){
-        String[] values = to_add.split(",");
+        String[] values = string_to_sort(to_add);
+        /**key for date vals
+         * date: 0
+         * invitee_id:1
+         * invitee_name:2
+         * inviter_id:3
+         * inviter_name:4
+         * location:5
+         * message:6
+         * status:7
+         * time:8
+         * */
+
+        //create_date(String inviter_name, String invitee_name, String status, String date_id)
+        String date= stripExtra(values[0]);
+        String inviter_name= stripExtra(values[4]);
+        String invitee_name=stripExtra(values[2]);
+        String status= stripExtra(values[7]);
+        String inviter_id= stripExtra(values[3]);
+        String invitee_id=stripExtra(values[1]);
+        String date_id= inviter_id+invitee_id;
+
+
         // need to fix to make concatenate of ids
-        matches_container.addView(this.create_date(stripExtra(values[5]), stripExtra(values[1]), stripExtraEnd(values[8]), (values[2].substring(values[2].indexOf("=") + 1))+(values[7].substring(values[7].indexOf("=") + 1))));
+        matches_container.addView(this.create_date(inviter_name, invitee_name, status, date_id));
+    }
+
+    //HELPER to clean array
+    private String[] string_to_sort(String s){
+        if(s.startsWith("{")){
+            s=s.substring(1);
+        }
+
+        if(s.endsWith("}")){
+            s=s.substring(0, s.length()-1);
+        }
+
+        String [] arr=s.split(",");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=arr[i].trim();
+        }
+        Arrays.sort(arr);
+        System.out.println("Values: "+s);
+        System.out.println("SORTED ARRAY VALS:");
+        for(int i=0;i<arr.length;i++){
+            System.out.println("i: "+i+" value: "+arr[i]);
+        }
+        return arr;
     }
 
     public String stripExtra(String extra){

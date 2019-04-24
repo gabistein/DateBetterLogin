@@ -25,6 +25,8 @@ public class ViewMatch extends AppCompatActivity {
     String values;
     String[] value_array;
     String email;
+    String came_from;
+    String date_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class ViewMatch extends AppCompatActivity {
         //testing if info is being passed
         other_id= getIntent().getStringExtra("other_id");
         email = getIntent().getStringExtra("email");
+        came_from=getIntent().getStringExtra("came_from");
+        date_id=getIntent().getStringExtra("date_id");
         populate_profile();
         Log.v("MYTAG", other_id);
     }
@@ -54,8 +58,10 @@ public class ViewMatch extends AppCompatActivity {
 
         }else if(getIntent().getStringExtra("came_from").equals("view_date")){
 
+            System.out.println("came_from is view_date");
             Intent back = new Intent(ViewMatch.this, ViewDate.class);
             back.putExtra("email", email);
+            back.putExtra("date_id", date_id);
             startActivity(back);
         }
 

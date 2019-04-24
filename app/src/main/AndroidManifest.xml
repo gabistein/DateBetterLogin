@@ -15,23 +15,38 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ViewDate" />
+        <activity
+            android:name=".ViewDate"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Dates"
             android:label="@string/title_activity_dates"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DateInput" />
-        <activity android:name=".ViewMatch" />
-        <activity android:name=".Matches" />
-        <activity android:name=".Options" />
-        <activity android:name=".Home" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".DateInput"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ViewMatch"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Matches"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Options"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Home"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".EditProfile"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Profile"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
