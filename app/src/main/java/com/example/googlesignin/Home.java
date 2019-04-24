@@ -108,7 +108,10 @@ public class Home extends AppCompatActivity {
     }
 
     protected void handle_dates(View v){
-        startActivity(new Intent(Home.this, Dates.class));
+        Intent to_dates = new Intent(Home.this, Dates.class);
+        to_dates.putExtra("email", email);
+        startActivity(to_dates);
+
     }
 
 
